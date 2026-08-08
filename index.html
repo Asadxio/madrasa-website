@@ -2106,6 +2106,10 @@ footer{
      ============================================================ -->
 <section id="home">
   <div class="container">
+    <div class="batch-ticker-banner reveal" style="display:inline-flex;align-items:center;gap:10px;background:rgba(201,162,75,0.12);border:1px solid var(--gold);padding:6px 18px;border-radius:20px;margin-bottom:20px;font-size:0.85rem;font-weight:600;color:var(--emerald-deep);">
+      <span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;animation:pulse 2s infinite;"></span>
+      <span>📢 New Admissions Open — Limited Seats Available for Upcoming Batch!</span>
+    </div>
     <p class="hero-bismillah reveal">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
     <div class="hero-center">
       <p class="ar-name reveal reveal-delay-1">مدرسة السالكات للبنات</p>
@@ -2375,6 +2379,24 @@ footer{
           <li>Progressive levels from beginner to advanced Qirat</li>
           <li>Live listening sessions with direct feedback</li>
         </ul>
+        <div class="qirat-audio-preview" style="margin-top:16px;padding:12px;background:var(--ivory);border-radius:6px;border:1px solid var(--border-gold-soft);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:0.85rem;font-weight:600;color:var(--emerald);display:flex;align-items:center;gap:6px;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              Sample Tajweed Recitation
+            </span>
+            <span style="font-size:0.75rem;color:var(--gold-soft);font-weight:600;">Surah Al-Fatihah</span>
+          </div>
+          <audio id="qiratAudio" preload="none" src="https://cdn.islamicfinder.org/quran/audio/128/ar.alafasy/001.mp3"></audio>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button type="button" id="playQiratBtn" style="background:var(--emerald);color:var(--white);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+              ▶
+            </button>
+            <div style="flex:1;height:4px;background:rgba(11,61,46,0.15);border-radius:2px;overflow:hidden;position:relative;">
+              <div id="qiratAudioProgress" style="width:0%;height:100%;background:var(--gold);transition:width 100ms linear;"></div>
+            </div>
+          </div>
+        </div>
         <div class="course-actions">
           <a href="#admissions" class="btn btn--primary btn--sm">Inquire Now</a>
           <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--outline btn--sm">WhatsApp</a>
@@ -2501,6 +2523,16 @@ footer{
       <p>We offer multiple daily batches to fit students' and homemakers' schedules across time zones. Exact fees are confirmed during your free consultation, based on course and batch.</p>
     </div>
 
+    <div class="tz-selector-wrap reveal" style="text-align:center;margin-bottom:24px;">
+      <label for="tzSelect" style="font-weight:600;margin-right:10px;color:var(--emerald);">Select Your Local Timezone:</label>
+      <select id="tzSelect" style="padding:8px 16px;border-radius:20px;border:1px solid var(--gold);background:var(--white);color:var(--emerald);font-family:var(--font-body);font-weight:600;cursor:pointer;">
+        <option value="0" selected>🇮🇳 India (IST - UTC+5:30)</option>
+        <option value="-2.5">🇸🇦 Saudi Arabia / UAE (AST/GST - UTC+3:00 / +4:00)</option>
+        <option value="-5.5">🇬🇧 United Kingdom (GMT - UTC+0:00)</option>
+        <option value="-10.5">🇺🇸 USA East Coast (EST - UTC-5:00)</option>
+      </select>
+    </div>
+
     <div class="timings-grid reveal">
       <div class="timing-card">
         <span class="timing-label" data-i18n="morning_batch">Morning Batch</span>
@@ -2531,6 +2563,21 @@ footer{
         <li>Our administration team will share the current fee structure and any active offers</li>
         <li>No fee is required to submit an inquiry or attend a free trial class</li>
       </ul>
+      <div class="currency-estimator" style="margin-top:20px;padding:16px;background:var(--ivory);border-radius:8px;border:1px solid var(--border-gold-soft);">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+          <span style="font-weight:600;color:var(--emerald);">Fee Range Estimator:</span>
+          <div class="currency-btn-group" style="display:flex;gap:6px;">
+            <button type="button" class="curr-btn is-active" data-curr="INR" style="padding:4px 12px;border-radius:14px;border:1px solid var(--border-gold);background:var(--emerald);color:var(--white);font-size:0.85rem;font-weight:600;cursor:pointer;">₹ INR</button>
+            <button type="button" class="curr-btn" data-curr="SAR" style="padding:4px 12px;border-radius:14px;border:1px solid var(--border-gold);background:var(--white);color:var(--emerald);font-size:0.85rem;font-weight:600;cursor:pointer;">﷼ SAR</button>
+            <button type="button" class="curr-btn" data-curr="AED" style="padding:4px 12px;border-radius:14px;border:1px solid var(--border-gold);background:var(--white);color:var(--emerald);font-size:0.85rem;font-weight:600;cursor:pointer;">د.إ AED</button>
+            <button type="button" class="curr-btn" data-curr="USD" style="padding:4px 12px;border-radius:14px;border:1px solid var(--border-gold);background:var(--white);color:var(--emerald);font-size:0.85rem;font-weight:600;cursor:pointer;">$ USD</button>
+          </div>
+        </div>
+        <div id="currFeeDisplay" style="font-size:1.1rem;font-weight:700;color:var(--emerald-deep);">
+          Approx. ₹1,200 – ₹2,500 / month <small style="font-weight:400;color:var(--charcoal-soft);">(Varies by course level & batch)</small>
+        </div>
+      </div>
+      <br>
       <a href="https://wa.me/916366919122?text=Assalamu%20Alaikum%2C%20could%20you%20please%20share%20the%20fee%20structure%20for%20your%20courses%3F" data-whatsapp data-whatsapp-text="Assalamu Alaikum, could you please share the fee structure for your courses?" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="fees_ask">Ask About Fees on WhatsApp</a>
     </div>
   </div>
@@ -3137,6 +3184,11 @@ footer{
       <p class="eyebrow" data-i18n="faq_eyebrow">Common Questions</p>
       <h2 data-i18n="faq_h2">Frequently Asked Questions</h2>
       <p>Answers to the questions we hear most often from prospective students and parents.</p>
+    </div>
+
+    <div class="faq-search-box reveal" style="max-width:600px;margin:0 auto 30px auto;position:relative;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" aria-hidden="true" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="faqSearchInput" placeholder="Search questions (e.g. fee, timing, recording, age)..." aria-label="Search frequently asked questions" style="width:100%;padding:14px 20px 14px 48px;border:1px solid var(--border-gold);border-radius:30px;font-family:var(--font-body);font-size:0.95rem;background:var(--white);color:var(--charcoal);box-shadow:var(--shadow-card);outline:none;">
     </div>
 
     <div class="faq-wrap reveal" id="faqWrap">
@@ -4167,6 +4219,92 @@ window.TRANSLATIONS = {
   mobile_apply:    {en:'Apply Now',ur:'ابھی اپلائی',hi:'अभी आवेदन',ar:'التقدم الآن',kn:'ಈಗ ಅರ್ಜಿ'},
   mobile_wa:       {en:'WhatsApp',ur:'واٹس ایپ',hi:'WhatsApp',ar:'واتساب',kn:'WhatsApp'}
 };
+
+// --- ADVANCED INTERACTIVE FEATURES ---
+var faqInput = document.getElementById('faqSearchInput');
+if (faqInput) {
+  faqInput.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    var items = document.querySelectorAll('#faqWrap .faq-item');
+    items.forEach(function(item) {
+      var text = item.textContent.toLowerCase();
+      item.style.display = (!q || text.indexOf(q) !== -1) ? '' : 'none';
+    });
+  });
+}
+
+var tzSelect = document.getElementById('tzSelect');
+if (tzSelect) {
+  var origTimings = [
+    { label: '7:00 AM – 9:00 AM', start: 7, end: 9 },
+    { label: '2:00 PM – 4:00 PM', start: 14, end: 16 },
+    { label: '6:00 PM – 8:00 PM', start: 18, end: 20 }
+  ];
+  tzSelect.addEventListener('change', function() {
+    var offset = parseFloat(this.value);
+    var cards = document.querySelectorAll('.timing-card .timing-value');
+    cards.forEach(function(card, idx) {
+      if (origTimings[idx]) {
+        if (offset === 0) {
+          card.innerHTML = origTimings[idx].label + ' <small>IST</small>';
+        } else {
+          var s = (origTimings[idx].start + offset + 24) % 24;
+          var e = (origTimings[idx].end + offset + 24) % 24;
+          var fmtS = (s % 12 || 12) + ':00 ' + (s >= 12 ? 'PM' : 'AM');
+          var fmtE = (e % 12 || 12) + ':00 ' + (e >= 12 ? 'PM' : 'AM');
+          card.innerHTML = fmtS + ' – ' + fmtE + ' <small>Local Time</small>';
+        }
+      }
+    });
+  });
+}
+
+var currData = {
+  INR: 'Approx. ₹1,200 – ₹2,500 / month',
+  SAR: 'Approx. 55 – 115 SAR / month',
+  AED: 'Approx. 55 – 115 AED / month',
+  USD: 'Approx. $15 – $30 / month'
+};
+document.querySelectorAll('.curr-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.curr-btn').forEach(function(b) {
+      b.style.background = 'var(--white)';
+      b.style.color = 'var(--emerald)';
+    });
+    btn.style.background = 'var(--emerald)';
+    btn.style.color = 'var(--white)';
+    var c = btn.getAttribute('data-curr');
+    var disp = document.getElementById('currFeeDisplay');
+    if (disp && currData[c]) {
+      disp.innerHTML = currData[c] + ' <small style="font-weight:400;color:var(--charcoal-soft);">(Varies by course level & batch)</small>';
+    }
+  });
+});
+
+var playBtn = document.getElementById('playQiratBtn');
+var audioEl = document.getElementById('qiratAudio');
+var progEl = document.getElementById('qiratAudioProgress');
+if (playBtn && audioEl) {
+  playBtn.addEventListener('click', function() {
+    if (audioEl.paused) {
+      audioEl.play();
+      playBtn.textContent = '❚❚';
+    } else {
+      audioEl.pause();
+      playBtn.textContent = '▶';
+    }
+  });
+  audioEl.addEventListener('timeupdate', function() {
+    if (audioEl.duration) {
+      var pct = (audioEl.currentTime / audioEl.duration) * 100;
+      if (progEl) progEl.style.width = pct + '%';
+    }
+  });
+  audioEl.addEventListener('ended', function() {
+    playBtn.textContent = '▶';
+    if (progEl) progEl.style.width = '0%';
+  });
+}
 </script>
 
 <script>
