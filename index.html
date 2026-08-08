@@ -35,6 +35,7 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230B3D2E'/%3E%3Ctext x='50' y='62' font-size='50' text-anchor='middle' fill='%23C9A24B'%3E%D8%B3%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B3D2E'/%3E%3Ctext x='50' y='62' font-size='50' text-anchor='middle' fill='%23C9A24B'%3E%D8%B3%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2709,7 +2710,9 @@ footer{
       <div class="admission-form reveal reveal-delay-2">
         <h3 data-i18n="form_h3">Admission Inquiry Form</h3>
         <p class="sub" data-i18n="form_sub">Fill in the details below and our team will reach out within 24 hours.</p>
-        <form id="admissionForm" novalidate>
+        <form id="admissionForm" name="admission-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="admission-inquiry">
+          <p class="hidden" style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="form-row">
             <div class="form-group">
               <label for="studentName" data-i18n="form_name">Student's Full Name</label>
@@ -3259,7 +3262,9 @@ footer{
 
       <div class="contact-form reveal reveal-delay-2">
         <h3 data-i18n="contact_send_h3">Send Us a Message</h3>
-        <form id="contactForm">
+        <form id="contactForm" name="contact-message" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact-message">
+          <p class="hidden" style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="form-row">
             <div class="form-group">
               <label for="cName" data-i18n="contact_name">Full Name</label>
@@ -3395,7 +3400,9 @@ footer{
       <div class="footer-col footer-newsletter">
         <h4 data-i18n="footer_stay">Stay Updated</h4>
         <p class="about-text" data-i18n="footer_newsletter_p">Get news on admissions, Jalsa dates, and Vision 2030 progress.</p>
-        <form class="footer-newsletter-form" id="newsletterForm">
+        <form class="footer-newsletter-form" id="newsletterForm" name="newsletter-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <p class="hidden" style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <label for="newsletterEmail" class="sr-only">Email address</label>
           <input type="email" id="newsletterEmail" placeholder="Your email address" data-i18n-placeholder="footer_email_ph" required>
           <button type="submit" data-i18n="footer_subscribe">Subscribe</button>
@@ -4160,6 +4167,18 @@ window.TRANSLATIONS = {
   mobile_apply:    {en:'Apply Now',ur:'ابھی اپلائی',hi:'अभी आवेदन',ar:'التقدم الآن',kn:'ಈಗ ಅರ್ಜಿ'},
   mobile_wa:       {en:'WhatsApp',ur:'واٹس ایپ',hi:'WhatsApp',ar:'واتساب',kn:'WhatsApp'}
 };
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      console.log('ServiceWorker registered successfully: ', reg.scope);
+    }).catch(function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 </script>
 
 </body>
