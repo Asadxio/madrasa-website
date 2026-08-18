@@ -27,6 +27,28 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Madarsa Tus Salikat Lil Banat — مدرسة السالكات للبنات">
 <meta name="twitter:description" content="A premium online Islamic madrasa for girls, Maslak Aala Hazrat. 500+ students, 5+ years, serving India and the world.">
+
+<!-- FEATURE #8: 3D TAJWEED MAKHARIJ CUBES -->
+<section id="makharij-3d" class="section section--emerald">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="color:var(--gold);">Qirat &amp; Tajweed</p>
+      <h2 style="color:var(--gold-light);">3D Tajweed Makharij Cubes</h2>
+      <p style="color:rgba(255,255,255,0.85);">Click any floating 3D cube to reveal the Makhraj (articulation point) for that Arabic letter. An interactive learning tool unlike any other Islamic website.</p>
+    </div>
+    <div class="makharij-section-wrap reveal">
+      <div class="makharij-canvas-wrap" id="makharijWrap">
+        <canvas id="makharijCanvas"></canvas>
+        <div class="makharij-info-panel">
+          <div class="makharij-letter-display" id="mkLetter">ا</div>
+          <div class="makharij-rule-display" id="mkRule">Click a cube to learn its Makhraj</div>
+          <div class="makharij-hint">☝️ Click or tap any floating 3D cube</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TODO: same image as og:image above:
 <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE/assets/og-cover.jpg">
 -->
@@ -2167,6 +2189,111 @@ footer{
   z-index: 2;
 }
 
+/* ============================================================
+   FEATURE #6: 3D HOLOGRAPHIC SANAD CERTIFICATE GENERATOR
+   ============================================================ */
+.sanad-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(4, 28, 20, 0.92);
+  backdrop-filter: blur(10px);
+  z-index: 11000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.sanad-modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.sanad-modal-box {
+  width: 96%; max-width: 720px;
+  background: linear-gradient(145deg, #0b3d2e 0%, #082b20 100%);
+  border: 2px solid #C9A24B;
+  border-radius: 16px;
+  padding: 32px 28px 24px;
+  position: relative;
+  box-shadow: 0 0 60px rgba(201,162,75,0.25), 0 40px 80px rgba(0,0,0,0.7);
+}
+.sanad-close { position: absolute; top: 12px; right: 18px; font-size: 2rem; color: #C9A24B; cursor: pointer; line-height: 1; background: none; border: none; }
+.sanad-title {
+  text-align: center; font-family: 'Playfair Display', serif;
+  color: #E2C77F; font-size: 1.4rem; margin-bottom: 6px;
+}
+.sanad-subtitle { text-align: center; color: rgba(226,199,127,0.7); font-size: 0.82rem; margin-bottom: 20px; }
+.sanad-form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.sanad-input, .sanad-select {
+  flex: 1; min-width: 180px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(201,162,75,0.5);
+  border-radius: 8px; color: #fff; padding: 10px 14px;
+  font-size: 0.9rem; outline: none;
+  transition: border-color 0.3s;
+}
+.sanad-input::placeholder { color: rgba(255,255,255,0.4); }
+.sanad-input:focus, .sanad-select:focus { border-color: #C9A24B; }
+.sanad-select option { background: #0b3d2e; color: #fff; }
+.sanad-generate-btn {
+  width: 100%; padding: 11px;
+  background: linear-gradient(135deg, #C9A24B 0%, #8B6914 100%);
+  border: none; border-radius: 8px;
+  color: #082b20; font-weight: 700; font-size: 0.95rem;
+  cursor: pointer; letter-spacing: 0.5px;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.sanad-generate-btn:hover { box-shadow: 0 6px 24px rgba(201,162,75,0.5); transform: translateY(-1px); }
+.sanad-canvas-wrap {
+  width: 100%; height: 340px; margin-top: 20px;
+  border: 1px solid rgba(201,162,75,0.3); border-radius: 10px;
+  background: #020f08; overflow: hidden; position: relative;
+}
+#sanadThreeCanvas { width: 100% !important; height: 100% !important; display: block; }
+.sanad-drag-hint {
+  position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+  color: rgba(226,199,127,0.55); font-size: 0.72rem; pointer-events: none;
+}
+
+/* ============================================================
+   FEATURE #7: 3D GOLDEN MIHRAB & JALI ARCHWAY
+   ============================================================ */
+.mihrab-3d-wrap {
+  width: 100%; height: 380px;
+  position: relative; overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #041c14 0%, #071e12 100%);
+  border: 1px solid rgba(201,162,75,0.25);
+  margin: 32px 0 8px;
+  cursor: grab;
+}
+.mihrab-3d-wrap:active { cursor: grabbing; }
+#mihrabCanvas { width: 100% !important; height: 100% !important; display: block; }
+.mihrab-label {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  color: rgba(226,199,127,0.55); font-size: 0.75rem; pointer-events: none;
+  text-align: center;
+}
+
+/* ============================================================
+   FEATURE #8: 3D TAJWEED MAKHARIJ CUBE FLIP CARDS
+   ============================================================ */
+.makharij-section-wrap { margin: 40px 0 0; }
+.makharij-canvas-wrap {
+  width: 100%; height: 380px;
+  background: linear-gradient(180deg, #020f08 0%, #041c14 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(201,162,75,0.2);
+  overflow: hidden; position: relative;
+  cursor: pointer;
+}
+#makharijCanvas { width: 100% !important; height: 100% !important; display: block; }
+.makharij-info-panel {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(4,28,20,0.96) 0%, transparent 100%);
+  padding: 14px 20px;
+  text-align: center;
+}
+.makharij-letter-display {
+  font-family: 'Amiri', serif; font-size: 2rem; color: #E2C77F;
+  line-height: 1;
+}
+.makharij-rule-display { color: rgba(255,255,255,0.8); font-size: 0.82rem; margin-top: 4px; }
+.makharij-hint { color: rgba(201,162,75,0.5); font-size: 0.72rem; margin-top: 2px; }
+
 </style>
 </head>
 <body>
@@ -2311,6 +2438,9 @@ footer{
         <a href="#admissions" class="btn btn--primary" data-i18n="hero_apply">Apply Now</a>
         <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold">WhatsApp Inquiry</a>
         <a href="#courses" class="btn btn--outline" data-i18n="hero_courses">View Courses</a>
+        <button type="button" id="openSanadBtn" class="btn btn--gold" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082b20;border:none;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          <span>📜 Generate My Sanad</span>
+        </button>
       </div>
     </div>
 
@@ -2396,6 +2526,23 @@ footer{
         <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇬🇧 United Kingdom</span>
         <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇺🇸 United States</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE #7: 3D GOLDEN MIHRAB & JALI ARCHWAY — VIRTUAL CAMPUS
+     ============================================================ -->
+<section id="virtual-campus" class="section section--emerald">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="color:var(--gold);">Virtual Sanctuary</p>
+      <h2 style="color:var(--gold-light);">The 3D Golden Mihrab</h2>
+      <p style="color:rgba(255,255,255,0.85);">Step inside our virtual Madrasa sanctuary. Move your mouse to explore the sacred space through the Golden Jali archway — light, geometry, and knowledge intertwined.</p>
+    </div>
+    <div class="mihrab-3d-wrap reveal" id="mihrab3dWrap">
+      <canvas id="mihrabCanvas"></canvas>
+      <p class="mihrab-label">✦ Move your mouse to explore the 3D Mihrab ✦</p>
     </div>
   </div>
 </section>
@@ -5191,6 +5338,551 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
+<script>
+/* ============================================================
+   FEATURE #6: 3D HOLOGRAPHIC SANAD GENERATOR (Three.js)
+   ============================================================ */
+(function() {
+  var openBtn = document.getElementById('openSanadBtn');
+  var closeBtn = document.getElementById('closeSanadBtn');
+  var modal = document.getElementById('sanadModal');
+  var genBtn = document.getElementById('generateSanadBtn');
+  var canvasWrap = document.getElementById('sanadCanvasWrap');
+
+  if (!modal) return;
+
+  if (openBtn) openBtn.addEventListener('click', function() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+  if (closeBtn) closeBtn.addEventListener('click', function() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); }
+  });
+
+  var sanadScene, sanadCamera, sanadRenderer, sanadCert, sanadAnimId;
+  var isDraggingCert = false, prevMouse = {x:0,y:0};
+
+  if (genBtn) genBtn.addEventListener('click', function() {
+    var name = (document.getElementById('sanadName').value.trim()) || 'Binte Abdullah';
+    var course = document.getElementById('sanadCourse').value;
+    canvasWrap.style.display = 'block';
+    buildSanad(name, course);
+  });
+
+  function buildSanad(studentName, courseName) {
+    if (sanadAnimId) cancelAnimationFrame(sanadAnimId);
+    var canvas = document.getElementById('sanadThreeCanvas');
+    var w = canvasWrap.clientWidth, h = canvasWrap.clientHeight;
+
+    if (!sanadRenderer) {
+      sanadRenderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      sanadRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      sanadRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+    }
+    sanadRenderer.setSize(w, h);
+
+    sanadScene = new THREE.Scene();
+    sanadCamera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+    sanadCamera.position.set(0, 0, 3.5);
+
+    // Lighting
+    var amb = new THREE.AmbientLight(0xFFF8EE, 1.2);
+    sanadScene.add(amb);
+    var dir1 = new THREE.DirectionalLight(0xC9A24B, 2.5);
+    dir1.position.set(3, 3, 3);
+    sanadScene.add(dir1);
+    var dir2 = new THREE.DirectionalLight(0x145C44, 1.0);
+    dir2.position.set(-3, -3, -3);
+    sanadScene.add(dir2);
+
+    // Build dynamic certificate texture
+    var texCanvas = document.createElement('canvas');
+    texCanvas.width = 1024; texCanvas.height = 682;
+    var tc = texCanvas.getContext('2d');
+
+    // Background gradient
+    var bg = tc.createLinearGradient(0, 0, 1024, 682);
+    bg.addColorStop(0, '#082b20');
+    bg.addColorStop(0.5, '#0b3d2e');
+    bg.addColorStop(1, '#082b20');
+    tc.fillStyle = bg;
+    tc.fillRect(0, 0, 1024, 682);
+
+    // Gold border double frame
+    tc.strokeStyle = '#C9A24B'; tc.lineWidth = 14;
+    tc.strokeRect(18, 18, 988, 646);
+    tc.strokeStyle = '#8B6914'; tc.lineWidth = 4;
+    tc.strokeRect(32, 32, 960, 618);
+
+    // Corner ornaments
+    function corner(cx, cy, flip) {
+      tc.save(); tc.translate(cx, cy);
+      if (flip === 1) tc.scale(-1, 1);
+      if (flip === 2) tc.scale(1, -1);
+      if (flip === 3) tc.scale(-1, -1);
+      tc.fillStyle = '#C9A24B';
+      tc.beginPath(); tc.arc(0, 0, 22, 0, Math.PI/2); tc.fill();
+      tc.fillStyle = '#082b20';
+      tc.beginPath(); tc.arc(0, 0, 14, 0, Math.PI/2); tc.fill();
+      tc.restore();
+    }
+    corner(32, 32, 0); corner(992, 32, 1); corner(32, 650, 2); corner(992, 650, 3);
+
+    // Bismillah
+    tc.textAlign = 'center';
+    tc.fillStyle = '#C9A24B';
+    tc.font = 'bold 38px Amiri, serif';
+    tc.fillText('بِسْمِ اللّهِ الرَّحْمَٰنِ الرَّحِيمِ', 512, 100);
+
+    // Title
+    tc.fillStyle = '#E2C77F';
+    tc.font = 'bold 36px Playfair Display, serif';
+    tc.fillText('MADARSA TUS SALIKAT LIL BANAT', 512, 160);
+
+    // Sanad text
+    tc.fillStyle = 'rgba(226,199,127,0.7)';
+    tc.font = '22px Georgia, serif';
+    tc.fillText('This is to certify that', 512, 230);
+
+    // Student name
+    tc.fillStyle = '#FFFFFF';
+    tc.font = 'bold 46px Playfair Display, serif';
+    tc.fillText(studentName, 512, 300);
+
+    // Gold line separator
+    tc.strokeStyle = '#C9A24B'; tc.lineWidth = 2;
+    tc.beginPath(); tc.moveTo(200, 320); tc.lineTo(824, 320); tc.stroke();
+
+    // Course
+    tc.fillStyle = 'rgba(226,199,127,0.75)';
+    tc.font = '22px Georgia, serif';
+    tc.fillText('has successfully enrolled in the course of', 512, 360);
+    tc.fillStyle = '#C9A24B';
+    tc.font = 'bold 34px Playfair Display, serif';
+    tc.fillText(courseName, 512, 410);
+
+    // Seal circle
+    tc.beginPath();
+    tc.arc(512, 530, 68, 0, Math.PI * 2);
+    tc.strokeStyle = '#C9A24B'; tc.lineWidth = 4; tc.stroke();
+    tc.beginPath();
+    tc.arc(512, 530, 56, 0, Math.PI * 2);
+    tc.strokeStyle = '#8B6914'; tc.lineWidth = 2; tc.stroke();
+    tc.fillStyle = '#C9A24B';
+    tc.font = 'bold 52px Amiri, serif';
+    tc.fillText('س', 512, 550);
+
+    // Holographic shimmer overlay
+    var shimmer = tc.createLinearGradient(0, 0, 1024, 682);
+    shimmer.addColorStop(0, 'rgba(255,200,50,0)');
+    shimmer.addColorStop(0.3, 'rgba(255,200,50,0.07)');
+    shimmer.addColorStop(0.5, 'rgba(200,255,200,0.05)');
+    shimmer.addColorStop(0.7, 'rgba(100,200,255,0.07)');
+    shimmer.addColorStop(1, 'rgba(255,200,50,0)');
+    tc.fillStyle = shimmer;
+    tc.fillRect(0, 0, 1024, 682);
+
+    var certTex = new THREE.CanvasTexture(texCanvas);
+
+    // Create 3D certificate mesh
+    var geom = new THREE.BoxGeometry(3.2, 2.15, 0.06);
+    var mats = [
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, roughness: 0.4, metalness: 0.6 }),
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, roughness: 0.4, metalness: 0.6 }),
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, roughness: 0.4, metalness: 0.6 }),
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, roughness: 0.4, metalness: 0.6 }),
+      new THREE.MeshStandardMaterial({ map: certTex, roughness: 0.1, metalness: 0.3, envMapIntensity: 1.2 }),
+      new THREE.MeshStandardMaterial({ color: 0x082b20, roughness: 0.6 })
+    ];
+    sanadCert = new THREE.Mesh(geom, mats);
+    sanadCert.rotation.x = 0.12;
+    sanadScene.add(sanadCert);
+
+    // Edge gold border lines
+    var edgeGeom = new THREE.EdgesGeometry(geom);
+    var edgeMat = new THREE.LineBasicMaterial({ color: 0xC9A24B });
+    var edges = new THREE.LineSegments(edgeGeom, edgeMat);
+    sanadCert.add(edges);
+
+    // Drag controls
+    canvas.addEventListener('mousedown', function(e) { isDraggingCert = true; prevMouse = {x: e.clientX, y: e.clientY}; });
+    window.addEventListener('mousemove', function(e) {
+      if (!isDraggingCert) return;
+      var dx = e.clientX - prevMouse.x, dy = e.clientY - prevMouse.y;
+      sanadCert.rotation.y += dx * 0.012;
+      sanadCert.rotation.x += dy * 0.012;
+      prevMouse = {x: e.clientX, y: e.clientY};
+    });
+    window.addEventListener('mouseup', function() { isDraggingCert = false; });
+
+    // Animate
+    var shimmerAngle = 0;
+    function animateSanad() {
+      sanadAnimId = requestAnimationFrame(animateSanad);
+      if (!isDraggingCert) {
+        sanadCert.rotation.y += 0.004;
+      }
+      shimmerAngle += 0.02;
+      sanadRenderer.render(sanadScene, sanadCamera);
+    }
+    animateSanad();
+  }
+})();
+</script>
+
+<script>
+/* ============================================================
+   FEATURE #7: 3D GOLDEN MIHRAB & JALI ARCHWAY (Three.js)
+   ============================================================ */
+(function() {
+  var wrap = document.getElementById('mihrab3dWrap');
+  var canvas = document.getElementById('mihrabCanvas');
+  if (!wrap || !canvas) return;
+
+  var w = wrap.clientWidth, h = wrap.clientHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.setSize(w, h);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.2;
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x020f08);
+  scene.fog = new THREE.Fog(0x020f08, 8, 25);
+
+  var camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
+  camera.position.set(0, 2, 8);
+
+  // Lighting
+  var amb = new THREE.AmbientLight(0x0b3d2e, 1.5);
+  scene.add(amb);
+  var spot = new THREE.SpotLight(0xC9A24B, 5, 20, Math.PI / 5, 0.4, 1.5);
+  spot.position.set(0, 10, 3);
+  spot.castShadow = true;
+  spot.shadow.mapSize.width = 1024;
+  spot.shadow.mapSize.height = 1024;
+  scene.add(spot);
+  var fill = new THREE.PointLight(0xE2C77F, 1.2, 15);
+  fill.position.set(0, 3, 5);
+  scene.add(fill);
+
+  var GOLD = new THREE.MeshStandardMaterial({ color: 0xC9A24B, metalness: 0.95, roughness: 0.15 });
+  var DARK = new THREE.MeshStandardMaterial({ color: 0x041c14, roughness: 0.8 });
+  var FLOOR = new THREE.MeshStandardMaterial({ color: 0x082b20, roughness: 0.6, metalness: 0.1 });
+
+  // Floor
+  var floor = new THREE.Mesh(new THREE.PlaneGeometry(14, 12), FLOOR);
+  floor.rotation.x = -Math.PI / 2;
+  floor.receiveShadow = true;
+  scene.add(floor);
+
+  // Back wall
+  var wall = new THREE.Mesh(new THREE.PlaneGeometry(14, 8), DARK);
+  wall.position.set(0, 4, -5);
+  wall.receiveShadow = true;
+  scene.add(wall);
+
+  // Arch columns
+  function addColumn(x) {
+    var col = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 5.5, 12), GOLD);
+    col.position.set(x, 2.75, 0);
+    col.castShadow = true;
+    scene.add(col);
+    // Capital on top
+    var cap = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.3, 0.55), GOLD);
+    cap.position.set(x, 5.65, 0);
+    scene.add(cap);
+    // Base
+    var base = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.25, 0.6), GOLD);
+    base.position.set(x, 0.12, 0);
+    scene.add(base);
+  }
+  addColumn(-2.2); addColumn(2.2);
+  // Outer columns
+  addColumn(-4.2); addColumn(4.2);
+
+  // Arch (torus top)
+  var archGeom = new THREE.TorusGeometry(2.2, 0.18, 12, 40, Math.PI);
+  var arch = new THREE.Mesh(archGeom, GOLD);
+  arch.position.set(0, 5.5, 0);
+  arch.castShadow = true;
+  scene.add(arch);
+  // Outer arch
+  var archOuter = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.14, 12, 40, Math.PI), GOLD);
+  archOuter.position.set(0, 5.5, 0);
+  scene.add(archOuter);
+
+  // Pointed arch shape (mihrab niche)
+  var mihrabShape = new THREE.Shape();
+  mihrabShape.moveTo(-1.1, 0);
+  mihrabShape.lineTo(-1.1, 3.2);
+  mihrabShape.quadraticCurveTo(-1.1, 4.8, 0, 5.0);
+  mihrabShape.quadraticCurveTo(1.1, 4.8, 1.1, 3.2);
+  mihrabShape.lineTo(1.1, 0);
+  mihrabShape.lineTo(-1.1, 0);
+  var hole = new THREE.Path();
+  hole.moveTo(-0.85, 0.1);
+  hole.lineTo(-0.85, 3.1);
+  hole.quadraticCurveTo(-0.85, 4.5, 0, 4.7);
+  hole.quadraticCurveTo(0.85, 4.5, 0.85, 3.1);
+  hole.lineTo(0.85, 0.1);
+  hole.lineTo(-0.85, 0.1);
+  mihrabShape.holes.push(hole);
+  var mihrabMesh = new THREE.Mesh(new THREE.ShapeGeometry(mihrabShape), GOLD);
+  mihrabMesh.position.set(0, 0, 0.05);
+  scene.add(mihrabMesh);
+
+  // Jali lattice pattern (simple grid of rings)
+  var jaliGroup = new THREE.Group();
+  var ringMat = new THREE.MeshStandardMaterial({ color: 0xC9A24B, metalness: 0.9, roughness: 0.2, side: THREE.DoubleSide });
+  for (var jx = -3; jx <= 3; jx++) {
+    for (var jy = 0; jy <= 3; jy++) {
+      if (Math.abs(jx) < 2 && jy < 3) continue; // skip inner mihrab area
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.04, 8, 20), ringMat);
+      ring.position.set(jx * 0.72, jy * 0.72 + 0.36, -0.3);
+      jaliGroup.add(ring);
+    }
+  }
+  jaliGroup.position.set(0, 0.2, -0.1);
+  scene.add(jaliGroup);
+
+  // Arabic calligraphy sphere on top of mihrab
+  var caliSphere = new THREE.Mesh(new THREE.SphereGeometry(0.35, 24, 24), GOLD);
+  caliSphere.position.set(0, 7.5, 0);
+  scene.add(caliSphere);
+
+  // Floating gold particles
+  var pGeo = new THREE.BufferGeometry();
+  var pCount = 80;
+  var pPos = new Float32Array(pCount * 3);
+  var pVel = [];
+  for (var pi = 0; pi < pCount; pi++) {
+    pPos[pi*3] = (Math.random()-0.5)*10;
+    pPos[pi*3+1] = Math.random()*7;
+    pPos[pi*3+2] = (Math.random()-0.5)*4;
+    pVel.push({ vy: Math.random()*0.012+0.004 });
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  var pMat = new THREE.PointsMaterial({ color: 0xE2C77F, size: 0.06, transparent: true, opacity: 0.7 });
+  var points = new THREE.Points(pGeo, pMat);
+  scene.add(points);
+
+  var mouse = { x: 0, y: 0 };
+  wrap.addEventListener('mousemove', function(e) {
+    var r = wrap.getBoundingClientRect();
+    mouse.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    mouse.y = -((e.clientY - r.top) / r.height - 0.5) * 2;
+  });
+
+  function animateMihrab() {
+    requestAnimationFrame(animateMihrab);
+    camera.position.x += (mouse.x * 1.8 - camera.position.x) * 0.04;
+    camera.position.y += (mouse.y * 0.8 + 2.0 - camera.position.y) * 0.04;
+    camera.lookAt(0, 3, 0);
+    // Particle float
+    var pp = pGeo.attributes.position.array;
+    for (var pi2 = 0; pi2 < pCount; pi2++) {
+      pp[pi2*3+1] += pVel[pi2].vy;
+      if (pp[pi2*3+1] > 8) pp[pi2*3+1] = 0;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    // Gentle sphere pulse
+    caliSphere.scale.setScalar(1 + Math.sin(Date.now()*0.002)*0.04);
+    renderer.render(scene, camera);
+  }
+  animateMihrab();
+
+  window.addEventListener('resize', function() {
+    var nw = wrap.clientWidth, nh = wrap.clientHeight;
+    camera.aspect = nw / nh;
+    camera.updateProjectionMatrix();
+    renderer.setSize(nw, nh);
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   FEATURE #8: 3D TAJWEED MAKHARIJ CUBES (Three.js)
+   ============================================================ */
+(function() {
+  var wrap = document.getElementById('makharijWrap');
+  var canvas = document.getElementById('makharijCanvas');
+  var mkLetter = document.getElementById('mkLetter');
+  var mkRule = document.getElementById('mkRule');
+  if (!wrap || !canvas) return;
+
+  var LETTERS = [
+    { ar: 'ا', en: 'Alif', rule: 'Jawf (Open air cavity) — Empty space of mouth & throat' },
+    { ar: 'ب', en: 'Ba', rule: 'Shafatain — Both lips pressed together' },
+    { ar: 'ث', en: 'Tha', rule: 'Tharfal Lisan — Tip of tongue & tips of upper teeth' },
+    { ar: 'خ', en: 'Kha', rule: 'Aqsal Lisan — Back of tongue against soft palate' },
+    { ar: 'ع', en: 'Ain', rule: 'Wast al-Halq — Middle of throat (strong pressure)' },
+    { ar: 'غ', en: 'Ghain', rule: 'Adna al-Halq — Throat near tongue root' }
+  ];
+
+  var w = wrap.clientWidth, h = wrap.clientHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(w, h);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(55, w / h, 0.1, 100);
+  camera.position.set(0, 0, 9);
+
+  var amb = new THREE.AmbientLight(0xFFF8EE, 1.0);
+  scene.add(amb);
+  var d1 = new THREE.DirectionalLight(0xC9A24B, 2.5);
+  d1.position.set(5, 5, 5);
+  scene.add(d1);
+  var d2 = new THREE.DirectionalLight(0x145C44, 1.0);
+  d2.position.set(-5, -5, -5);
+  scene.add(d2);
+
+  function makeLetterTexture(letter, bgColor) {
+    var tc = document.createElement('canvas');
+    tc.width = 256; tc.height = 256;
+    var c = tc.getContext('2d');
+    // BG
+    var g = c.createLinearGradient(0, 0, 256, 256);
+    g.addColorStop(0, bgColor[0]); g.addColorStop(1, bgColor[1]);
+    c.fillStyle = g;
+    c.roundRect ? c.roundRect(0, 0, 256, 256, 24) : c.fillRect(0, 0, 256, 256);
+    c.fill ? c.fill() : null;
+    c.fillStyle = g;
+    c.fillRect(0, 0, 256, 256);
+    // Border
+    c.strokeStyle = '#C9A24B'; c.lineWidth = 8;
+    c.strokeRect(6, 6, 244, 244);
+    // Letter
+    c.fillStyle = '#E2C77F';
+    c.font = 'bold 120px Amiri, Arial, serif';
+    c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText(letter, 128, 138);
+    return new THREE.CanvasTexture(tc);
+  }
+
+  function makeRuleTexture(en, rule) {
+    var tc = document.createElement('canvas');
+    tc.width = 256; tc.height = 256;
+    var c = tc.getContext('2d');
+    c.fillStyle = '#041c14';
+    c.fillRect(0, 0, 256, 256);
+    c.strokeStyle = '#C9A24B'; c.lineWidth = 6;
+    c.strokeRect(5, 5, 246, 246);
+    c.fillStyle = '#C9A24B';
+    c.font = 'bold 22px Playfair Display, serif';
+    c.textAlign = 'center';
+    c.fillText(en, 128, 48);
+    c.strokeStyle = '#C9A24B'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(30, 68); c.lineTo(226, 68); c.stroke();
+    c.fillStyle = '#E2C77F';
+    c.font = '14px Arial, sans-serif';
+    var words = rule.split(' ');
+    var line = '', lines2 = [], y2 = 90;
+    for (var wi = 0; wi < words.length; wi++) {
+      var test = line + words[wi] + ' ';
+      if (c.measureText(test).width > 210 && line) { lines2.push(line.trim()); line = words[wi] + ' '; }
+      else line = test;
+    }
+    lines2.push(line.trim());
+    lines2.forEach(function(l) { c.fillText(l, 128, y2); y2 += 22; });
+    return new THREE.CanvasTexture(tc);
+  }
+
+  var BG_PAIRS = [
+    ['#082b20','#0d4a32'], ['#0b3d2e','#041c14'],
+    ['#072419','#0f3d28'], ['#0a3528','#082b20'],
+    ['#041c14','#0b3d2e'], ['#0d4a32','#072419']
+  ];
+
+  var cubes = [];
+  var flipped = [];
+  LETTERS.forEach(function(data, i) {
+    var frontTex = makeLetterTexture(data.ar, BG_PAIRS[i]);
+    var backTex = makeRuleTexture(data.en, data.rule);
+
+    var mats = [
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, metalness: 0.7, roughness: 0.3 }),
+      new THREE.MeshStandardMaterial({ color: 0x0b3d2e, metalness: 0.7, roughness: 0.3 }),
+      new THREE.MeshStandardMaterial({ color: 0x082b20, metalness: 0.7, roughness: 0.3 }),
+      new THREE.MeshStandardMaterial({ color: 0x082b20, metalness: 0.7, roughness: 0.3 }),
+      new THREE.MeshStandardMaterial({ map: frontTex }),
+      new THREE.MeshStandardMaterial({ map: backTex })
+    ];
+
+    var cube = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.8, 1.8), mats);
+    var edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(1.8, 1.8, 1.8)),
+      new THREE.LineBasicMaterial({ color: 0xC9A24B })
+    );
+    cube.add(edges);
+
+    var cols = 3, rows = 2;
+    var col = i % cols, row = Math.floor(i / cols);
+    cube.position.set((col - 1) * 2.8, (row - 0.5) * -2.8 + 0.6, 0);
+    cube.userData = { index: i, baseY: cube.position.y, baseX: cube.position.x };
+    cube.rotation.y = 0.3;
+    scene.add(cube);
+    cubes.push(cube);
+    flipped.push(false);
+  });
+
+  // Raycaster for click detection
+  var raycaster = new THREE.Raycaster();
+  var clickMouse = new THREE.Vector2();
+  canvas.addEventListener('click', function(e) {
+    var r = wrap.getBoundingClientRect();
+    clickMouse.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+    clickMouse.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+    raycaster.setFromCamera(clickMouse, camera);
+    var hits = raycaster.intersectObjects(cubes);
+    if (hits.length > 0) {
+      var idx = hits[0].object.userData.index;
+      if (idx === undefined && hits[0].object.parent) idx = hits[0].object.parent.userData.index;
+      if (idx !== undefined) {
+        flipped[idx] = !flipped[idx];
+        var letter = LETTERS[idx];
+        if (mkLetter) mkLetter.textContent = letter.ar;
+        if (mkRule) mkRule.textContent = flipped[idx] ? letter.rule : 'Click a cube to learn its Makhraj';
+      }
+    }
+  });
+
+  var clock = new THREE.Clock();
+  function animateCubes() {
+    requestAnimationFrame(animateCubes);
+    var t = clock.getElapsedTime();
+    cubes.forEach(function(cube, i) {
+      // Breathing float
+      cube.position.y = cube.userData.baseY + Math.sin(t * 1.1 + i * 1.2) * 0.12;
+      // Flip rotation
+      var targetRotY = flipped[i] ? Math.PI : 0.3;
+      cube.rotation.y += (targetRotY - cube.rotation.y) * 0.06;
+      // Gentle continuous X wobble when not flipped
+      if (!flipped[i]) cube.rotation.x = Math.sin(t * 0.6 + i) * 0.08;
+    });
+    renderer.render(scene, camera);
+  }
+  animateCubes();
+
+  window.addEventListener('resize', function() {
+    var nw = wrap.clientWidth, nh = wrap.clientHeight;
+    camera.aspect = nw / nh;
+    camera.updateProjectionMatrix();
+    renderer.setSize(nw, nh);
+  });
+})();
+</script>
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
@@ -5202,6 +5894,33 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+
+<!-- ============================================================
+     FEATURE #6: 3D HOLOGRAPHIC SANAD CERTIFICATE GENERATOR MODAL
+     ============================================================ -->
+<div id="sanadModal" class="sanad-modal-overlay" aria-hidden="true">
+  <div class="sanad-modal-box">
+    <button type="button" class="sanad-close" id="closeSanadBtn" aria-label="Close">&times;</button>
+    <h2 class="sanad-title">&#x1F4DC; Generate Your Personal Sanad</h2>
+    <p class="sanad-subtitle">Enter your name and course to receive your 3D Holographic Certificate of Knowledge</p>
+    <div class="sanad-form-row">
+      <input type="text" id="sanadName" class="sanad-input" placeholder="Your Full Name (e.g. Fatima Ahmed)" maxlength="40" />
+      <select id="sanadCourse" class="sanad-select">
+        <option value="Aalimah (Darse Nizami)">Aalimah Course — Darse Nizami</option>
+        <option value="Muballigha">Muballigha Course</option>
+        <option value="Qirat &amp; Tajweed">Qirat &amp; Tajweed</option>
+        <option value="Adult Deeniyat">Adult Deeniyat</option>
+        <option value="Kids Deeniyat">Kids Deeniyat</option>
+      </select>
+    </div>
+    <button type="button" class="sanad-generate-btn" id="generateSanadBtn">&#x2728; Generate My 3D Sanad Certificate</button>
+    <div class="sanad-canvas-wrap" id="sanadCanvasWrap" style="display:none;">
+      <canvas id="sanadThreeCanvas"></canvas>
+      <p class="sanad-drag-hint">&#x1F5B1;&#xFE0F; Drag to rotate your 3D certificate</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
