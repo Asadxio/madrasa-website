@@ -1996,8 +1996,21 @@ footer{
   opacity: 0.65;
   transition: opacity 600ms ease;
 }
+#globe-3d-wrap {
+  width: 100%;
+  max-width: 480px;
+  height: 360px;
+  margin: 0 auto;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+#globe-3d-wrap:active {
+  cursor: grabbing;
+}
 @media (max-width: 768px) {
-  #hero-3d-wrap { height: 380px; opacity: 0.45; }
+  #globe-3d-wrap { height: 280px; }
 }
 
 </style>
@@ -2211,6 +2224,23 @@ footer{
           <span>Live + Recorded Classes</span>
           <span>Personal Guidance</span>
         </div>
+      </div>
+    </div>
+
+    <!-- 3D Interactive Globe Section -->
+    <div class="globe-feature-wrap reveal" style="margin-top:40px;background:var(--emerald-deep);border:1px solid var(--border-gold);border-radius:12px;padding:30px 20px;color:var(--white);text-align:center;position:relative;overflow:hidden;">
+      <div style="max-width:650px;margin:0 auto 15px auto;">
+        <p class="eyebrow" style="color:var(--gold);">Global Student Presence</p>
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold-light);margin-bottom:8px;">Connecting Girls Worldwide to Sacred Knowledge</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.85);">Drag or swipe the 3D globe to explore our student locations across India, Saudi Arabia, UAE, Qatar, UK, and USA.</p>
+      </div>
+      <div id="globe-3d-wrap"></div>
+      <div class="globe-locations-pills" style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px;">
+        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇮🇳 Karnataka &amp; India</span>
+        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇸🇦 Saudi Arabia</span>
+        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇦🇪 UAE &amp; Qatar</span>
+        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇬🇧 United Kingdom</span>
+        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇺🇸 United States</span>
       </div>
     </div>
   </div>
@@ -4525,6 +4555,183 @@ window.addEventListener('DOMContentLoaded', function() {
     renderer.render(scene, camera);
   }
   animate();
+});
+
+/* ============================================================
+   FEATURE #2: INTERACTIVE 3D EMERALD & GOLD GLOBE
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', function() {
+  var gContainer = document.getElementById('globe-3d-wrap');
+  if (!gContainer || typeof THREE === 'undefined') return;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(45, gContainer.clientWidth / gContainer.clientHeight, 0.1, 1000);
+  camera.position.z = 4.8;
+
+  var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(gContainer.clientWidth, gContainer.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  gContainer.appendChild(renderer.domElement);
+
+  var globeGroup = new THREE.Group();
+
+  // Dark Emerald Globe Sphere
+  var sphereGeo = new THREE.SphereGeometry(1.8, 48, 48);
+  var sphereMat = new THREE.MeshStandardMaterial({
+    color: 0x072A1F,
+    roughness: 0.6,
+    metalness: 0.4
+  });
+  var globeMesh = new THREE.Mesh(sphereGeo, sphereMat);
+  globeGroup.add(globeMesh);
+
+  // Gold Latitude/Longitude Grid Lines
+  var gridGeo = new THREE.SphereGeometry(1.81, 24, 24);
+  var gridMat = new THREE.MeshBasicMaterial({
+    color: 0xC9A24B,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.18
+  });
+  var gridMesh = new THREE.Mesh(gridGeo, gridMat);
+  globeGroup.add(gridMesh);
+
+  // Convert Lat/Lon to 3D Sphere Coordinates
+  function latLonToVector3(lat, lon, radius) {
+    var phi = (90 - lat) * (Math.PI / 180);
+    var theta = (lon + 180) * (Math.PI / 180);
+    var x = -(radius * Math.sin(phi) * Math.cos(theta));
+    var z = (radius * Math.sin(phi) * Math.sin(theta));
+    var y = (radius * Math.cos(phi));
+    return new THREE.Vector3(x, y, z);
+  }
+
+  // Student Hotspots Locations
+  var studentLocations = [
+    { name: 'Karnataka & India', lat: 15.3647, lon: 75.1240 },
+    { name: 'Hyderabad', lat: 17.3850, lon: 78.4867 },
+    { name: 'Maharashtra', lat: 19.0760, lon: 72.8777 },
+    { name: 'Saudi Arabia', lat: 24.7136, lon: 46.6753 },
+    { name: 'UAE & Qatar', lat: 25.2048, lon: 55.2708 },
+    { name: 'United Kingdom', lat: 51.5074, lon: -0.1278 },
+    { name: 'United States', lat: 40.7128, lon: -74.0060 }
+  ];
+
+  var markerGeo = new THREE.SphereGeometry(0.045, 16, 16);
+  var markerMat = new THREE.MeshBasicMaterial({ color: 0xFFD700 });
+  var pulseRings = [];
+
+  studentLocations.forEach(function(loc) {
+    var pos = latLonToVector3(loc.lat, loc.lon, 1.815);
+
+    // Gold Pin Marker
+    var marker = new THREE.Mesh(markerGeo, markerMat);
+    marker.position.copy(pos);
+    globeGroup.add(marker);
+
+    // Animated Pulse Ring
+    var ringGeo = new THREE.RingGeometry(0.03, 0.08, 24);
+    var ringMat = new THREE.MeshBasicMaterial({
+      color: 0xE2C77F,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.8
+    });
+    var ringMesh = new THREE.Mesh(ringGeo, ringMat);
+    ringMesh.position.copy(pos);
+    ringMesh.lookAt(new THREE.Vector3(0,0,0));
+    globeGroup.add(ringMesh);
+    pulseRings.push(ringMesh);
+  });
+
+  scene.add(globeGroup);
+
+  // Lighting Setup
+  var ambientLight = new THREE.AmbientLight(0xFFF8EE, 1.2);
+  scene.add(ambientLight);
+
+  var dirLight = new THREE.DirectionalLight(0xC9A24B, 2.5);
+  dirLight.position.set(5, 5, 7);
+  scene.add(dirLight);
+
+  var backLight = new THREE.DirectionalLight(0x145C44, 1.0);
+  backLight.position.set(-5, -5, -5);
+  scene.add(backLight);
+
+  // Interactive Drag Controls (Mouse & Touch)
+  var isDragging = false;
+  var previousMousePosition = { x: 0, y: 0 };
+
+  gContainer.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  gContainer.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    var deltaMove = {
+      x: e.clientX - previousMousePosition.x,
+      y: e.clientY - previousMousePosition.y
+    };
+    globeGroup.rotation.y += deltaMove.x * 0.008;
+    globeGroup.rotation.x += deltaMove.y * 0.008;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  document.addEventListener('mouseup', function() { isDragging = false; });
+  gContainer.addEventListener('mouseleave', function() { isDragging = false; });
+
+  // Touch Controls for Mobile
+  gContainer.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  }, { passive: true });
+
+  gContainer.addEventListener('touchmove', function(e) {
+    if (!isDragging || e.touches.length !== 1) return;
+    var deltaMove = {
+      x: e.touches[0].clientX - previousMousePosition.x,
+      y: e.touches[0].clientY - previousMousePosition.y
+    };
+    globeGroup.rotation.y += deltaMove.x * 0.008;
+    globeGroup.rotation.x += deltaMove.y * 0.008;
+    previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  gContainer.addEventListener('touchend', function() { isDragging = false; });
+
+  // Responsive Resize
+  window.addEventListener('resize', function() {
+    if (!gContainer) return;
+    var w = gContainer.clientWidth;
+    var h = gContainer.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+
+  // Animation Loop
+  var clock = new THREE.Clock();
+  function animateGlobe() {
+    requestAnimationFrame(animateGlobe);
+    var elapsed = clock.getElapsedTime();
+
+    // Auto-spin globe gently when user isn't dragging
+    if (!isDragging) {
+      globeGroup.rotation.y += 0.003;
+    }
+
+    // Pulse golden rings
+    pulseRings.forEach(function(ring, idx) {
+      var s = 1 + Math.sin(elapsed * 3 + idx) * 0.3;
+      ring.scale.set(s, s, s);
+    });
+
+    renderer.render(scene, camera);
+  }
+  animateGlobe();
 });
 </script>
 
