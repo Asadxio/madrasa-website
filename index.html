@@ -2034,6 +2034,119 @@ footer{
   border-radius: inherit;
 }
 
+/* Feature #4 3D Page Flip Prospectus Modal */
+.prospectus-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(8, 43, 32, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+.prospectus-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.prospectus-modal-content {
+  width: 92%;
+  max-width: 580px;
+  background: var(--white);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 30px 24px 20px 24px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  perspective: 1200px;
+}
+.prospectus-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 2rem;
+  color: var(--gold);
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+}
+.book-3d-stage {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  perspective: 1200px;
+}
+.book-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.page-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ivory);
+  border: 1px solid var(--border-gold-soft);
+  border-radius: 8px;
+  padding: 24px 20px;
+  box-shadow: inset 0 0 20px rgba(11,61,46,0.05), 0 10px 30px rgba(0,0,0,0.15);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  display: none;
+}
+.page-3d.active {
+  display: block;
+}
+.page-3d.flipped {
+  transform: rotateY(-180deg);
+}
+.prospectus-cover {
+  background: var(--emerald-deep);
+  color: var(--white);
+  height: 100%;
+  border-radius: 6px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+}
+.prospectus-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-gold-soft);
+}
+.prospectus-nav-btn {
+  background: var(--emerald);
+  color: var(--white);
+  border: 1px solid var(--gold);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.prospectus-nav-btn:hover {
+  background: var(--gold);
+  color: var(--emerald-deep);
+}
+
 </style>
 </head>
 <body>
@@ -2380,6 +2493,12 @@ footer{
       <p class="eyebrow" data-i18n="courses_eyebrow">Academic Programs</p>
       <h2 data-i18n="courses_h2">Our Courses</h2>
       <p>A complete pathway of Islamic education — from a child's first steps in Deeniyat to the advanced scholarship of Darse Nizami. See <a href="#timings-fees">batch timings &amp; fees</a> below.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:10px;margin-bottom:24px;" class="reveal">
+      <button type="button" id="openProspectusBtn" class="btn btn--gold" style="box-shadow:var(--shadow-lift);display:inline-flex;align-items:center;gap:8px;font-weight:600;padding:10px 22px;border-radius:24px;">
+        <span>📖 Open Interactive 3D Prospectus &amp; Syllabus</span>
+      </button>
     </div>
 
     <div class="course-filters reveal" role="tablist" aria-label="Filter courses by category">
@@ -4801,6 +4920,163 @@ window.addEventListener('DOMContentLoaded', function() {
         glareOverlay.style.opacity = '0';
       }
     });
+  });
+});
+<!-- ============================================================
+     FEATURE #4: 3D PROSPECTUS MODAL HTML
+     ============================================================ -->
+<div id="syllabus3dModal" class="prospectus-modal-overlay" aria-hidden="true">
+  <div class="prospectus-modal-content">
+    <button type="button" class="prospectus-close-btn" id="closeProspectusBtn" aria-label="Close prospectus">&times;</button>
+    <div class="book-3d-stage">
+      <div class="book-3d" id="book3d">
+        <!-- Page 1 (Cover) -->
+        <div class="page-3d p1 active" style="z-index: 5;">
+          <div class="prospectus-cover">
+            <span class="seal" style="margin-bottom:12px;display:inline-block;">
+              <svg viewBox="0 0 100 100" width="54" height="54" fill="none"><circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="2"/><text x="50" y="62" font-family="Amiri, serif" font-size="45" fill="#C9A24B" text-anchor="middle">س</text></svg>
+            </span>
+            <h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold-light);margin-bottom:4px;">MADARSA TUS SALIKAT LIL BANAT</h2>
+            <p style="color:var(--gold);font-weight:600;font-size:0.85rem;margin-bottom:12px;">مدرسة السالكات للبنات</p>
+            <div style="border-top:1px solid var(--border-gold);border-bottom:1px solid var(--border-gold);padding:8px 0;margin:12px 0;">
+              <p style="font-weight:700;letter-spacing:1px;color:var(--white);font-size:0.9rem;">OFFICIAL PROSPECTUS &amp; SYLLABUS</p>
+              <small style="color:rgba(255,255,255,0.75);">Academic Year 2025–2026</small>
+            </div>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.85);margin-top:10px;">Online Islamic Madrasa Exclusively for Girls &amp; Women</p>
+          </div>
+        </div>
+
+        <!-- Page 2 (Darse Nizami & Muballigha) -->
+        <div class="page-3d p2" style="z-index: 4;">
+          <h3 style="color:var(--emerald);font-family:var(--font-display);font-size:1.3rem;border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:10px;">1. Darse Nizami &amp; Muballigha</h3>
+          <h4 style="color:var(--emerald-deep);font-size:0.9rem;margin-bottom:3px;">Aalimah Course (Darse Nizami) — 5 Years</h4>
+          <p style="font-size:0.8rem;color:var(--charcoal-soft);margin-bottom:8px;">Comprehensive study of Tafseer, Hadith, Fiqh Hanafi, Usul-ul-Fiqh, Arabic Grammar (Nahu &amp; Sarf), following Maslak Aala Hazrat.</p>
+          <h4 style="color:var(--emerald-deep);font-size:0.9rem;margin-bottom:3px;">Muballigha Course — 1 Year + 3 Months</h4>
+          <p style="font-size:0.8rem;color:var(--charcoal-soft);">Focused Da'wah &amp; public speaking training for sisters, combining essential Fiqh rulings with practical community teaching skills.</p>
+        </div>
+
+        <!-- Page 3 (Qirat & Tajweed + Deeniyat) -->
+        <div class="page-3d p3" style="z-index: 3;">
+          <h3 style="color:var(--emerald);font-family:var(--font-display);font-size:1.3rem;border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:10px;">2. Qirat, Tajweed &amp; Deeniyat</h3>
+          <h4 style="color:var(--emerald-deep);font-size:0.9rem;margin-bottom:3px;">Qirat &amp; Tajweed Program</h4>
+          <p style="font-size:0.8rem;color:var(--charcoal-soft);margin-bottom:8px;">One-on-one live recitation correction focusing on Makharij (articulation points), Tajweed rules, and melodious Qirat under certified Ustadahs.</p>
+          <h4 style="color:var(--emerald-deep);font-size:0.9rem;margin-bottom:3px;">Kids &amp; Adult Deeniyat</h4>
+          <p style="font-size:0.8rem;color:var(--charcoal-soft);">Fundamental Islamic studies for young girls and adult women covering Namaz, Kalimas, Daily Masnoon Duas, Basic Fiqh, and Islamic Etiquettes.</p>
+        </div>
+
+        <!-- Page 4 (Admissions & Contact) -->
+        <div class="page-3d p4" style="z-index: 2;">
+          <h3 style="color:var(--emerald);font-family:var(--font-display);font-size:1.3rem;border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:10px;">3. Admissions &amp; Enrolment</h3>
+          <p style="font-size:0.82rem;color:var(--charcoal);margin-bottom:8px;">Classes are conducted live online via interactive video sessions with recordings provided for every lecture.</p>
+          <ul style="font-size:0.8rem;color:var(--charcoal-soft);padding-left:16px;margin-bottom:12px;">
+            <li>Exclusively female Ustadahs for all batches</li>
+            <li>Flexible morning, afternoon &amp; evening slots</li>
+            <li>Free 1-week trial class before confirmation</li>
+          </ul>
+          <div style="text-align:center;margin-top:16px;">
+            <a href="https://wa.me/916366919122?text=Assalamu%20Alaikum%2C%20I%20have%20read%20the%20prospectus%20and%20want%20to%20apply." target="_blank" rel="noopener" class="btn btn--gold" style="font-size:0.82rem;padding:6px 16px;">Enroll on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="prospectus-controls">
+      <button type="button" id="prevPageBtn" class="prospectus-nav-btn">◀ Previous</button>
+      <span id="pageIndicator" style="color:var(--emerald);font-size:0.88rem;font-weight:600;">Page 1 of 4</span>
+      <button type="button" id="nextPageBtn" class="prospectus-nav-btn">Next Page ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   FEATURE #4: 3D PAGE FLIP PROSPECTUS SCRIPT
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', function() {
+  var openBtn = document.getElementById('openProspectusBtn');
+  var closeBtn = document.getElementById('closeProspectusBtn');
+  var modal = document.getElementById('syllabus3dModal');
+  var prevBtn = document.getElementById('prevPageBtn');
+  var nextBtn = document.getElementById('nextPageBtn');
+  var pageIndicator = document.getElementById('pageIndicator');
+
+  if (!modal) return;
+
+  var totalPages = 4;
+  var currPage = 1;
+
+  function updatePageUI() {
+    for (var i = 1; i <= totalPages; i++) {
+      var p = modal.querySelector('.p' + i);
+      if (!p) continue;
+      if (i < currPage) {
+        p.classList.add('active', 'flipped');
+      } else if (i === currPage) {
+        p.classList.add('active');
+        p.classList.remove('flipped');
+      } else {
+        p.classList.remove('active', 'flipped');
+      }
+    }
+    if (pageIndicator) pageIndicator.textContent = 'Page ' + currPage + ' of ' + totalPages;
+    if (prevBtn) prevBtn.style.opacity = (currPage === 1) ? '0.4' : '1';
+    if (nextBtn) nextBtn.style.opacity = (currPage === totalPages) ? '0.4' : '1';
+  }
+
+  if (openBtn) {
+    openBtn.addEventListener('click', function() {
+      currPage = 1;
+      updatePageUI();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (currPage < totalPages) {
+        currPage++;
+        updatePageUI();
+      }
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      if (currPage > 1) {
+        currPage--;
+        updatePageUI();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    } else if (e.key === 'ArrowRight' && currPage < totalPages) {
+      currPage++;
+      updatePageUI();
+    } else if (e.key === 'ArrowLeft' && currPage > 1) {
+      currPage--;
+      updatePageUI();
+    }
   });
 });
 </script>
