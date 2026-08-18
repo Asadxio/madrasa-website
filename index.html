@@ -2147,6 +2147,26 @@ footer{
   color: var(--emerald-deep);
 }
 
+/* Feature #5 3D Ambient Gold Particle Canvas */
+.section--emerald, .donate-section, .achieve-section, .app-section {
+  position: relative;
+  overflow: hidden;
+}
+.ambient-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+}
+.section--emerald .container, .donate-section .container, .achieve-section .container, .app-section .container {
+  position: relative;
+  z-index: 2;
+}
+
 </style>
 </head>
 <body>
@@ -5077,6 +5097,96 @@ window.addEventListener('DOMContentLoaded', function() {
       currPage--;
       updatePageUI();
     }
+  });
+});
+
+/* ============================================================
+   FEATURE #5: 3D GOLD PARTICLE FIELD & LIGHT RIPPLE SCRIPT
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', function() {
+  var darkSections = document.querySelectorAll('.section--emerald, .donate-section, .achieve-section, .app-section');
+  
+  darkSections.forEach(function(sec) {
+    var canvas = document.createElement('canvas');
+    canvas.className = 'ambient-particle-canvas';
+    sec.insertBefore(canvas, sec.firstChild);
+
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var width, height;
+    var particles = [];
+    var particleCount = 50;
+    var mouse = { x: -1000, y: -1000 };
+
+    function resize() {
+      width = canvas.width = sec.clientWidth;
+      height = canvas.height = sec.clientHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    sec.addEventListener('mousemove', function(e) {
+      var rect = sec.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    sec.addEventListener('mouseleave', function() {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    for (var i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: -Math.random() * 0.5 - 0.2,
+        size: Math.random() * 2.2 + 0.8,
+        alpha: Math.random() * 0.6 + 0.25,
+        baseAlpha: Math.random() * 0.6 + 0.25
+      });
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (var p = 0; p < particles.length; p++) {
+        var pt = particles[p];
+
+        // Float upward
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+
+        if (pt.y < 0) pt.y = height;
+        if (pt.x < 0) pt.x = width;
+        if (pt.x > width) pt.x = 0;
+
+        // Interactive mouse light ripple push
+        var dx = mouse.x - pt.x;
+        var dy = mouse.y - pt.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var maxDist = 120;
+
+        if (dist < maxDist) {
+          var force = (maxDist - dist) / maxDist;
+          pt.x -= (dx / dist) * force * 3;
+          pt.y -= (dy / dist) * force * 3;
+          pt.alpha = Math.min(1, pt.baseAlpha + force * 0.5);
+        } else {
+          pt.alpha += (pt.baseAlpha - pt.alpha) * 0.05;
+        }
+
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(226, 199, 127, ' + pt.alpha.toFixed(2) + ')';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
   });
 });
 </script>
