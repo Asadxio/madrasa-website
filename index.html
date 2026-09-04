@@ -2316,6 +2316,15 @@ footer{
   </span>
   <p>Madarsa Tus Salikat Lil Banat</p>
 </div>
+<script>
+(function(){
+  var ld = document.getElementById('loader');
+  if(!ld) return;
+  function hideLd(){ ld.classList.add('is-hidden'); }
+  ld.addEventListener('click', hideLd);
+  setTimeout(hideLd, 2000);
+})();
+</script>
 
 <div id="scroll-progress"></div>
 
@@ -3877,15 +3886,17 @@ footer{
   });
 
   /* ---------- Loader ---------- */
-  window.addEventListener('load', function(){
-    var loader = document.getElementById('loader');
-    setTimeout(function(){ loader.classList.add('is-hidden'); }, 600);
-  });
-  // Fallback in case load event is delayed
-  setTimeout(function(){
+  function hideLoader(){
     var loader = document.getElementById('loader');
     if(loader) loader.classList.add('is-hidden');
-  }, 3500);
+  }
+  window.addEventListener('load', function(){
+    setTimeout(hideLoader, 300);
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    setTimeout(hideLoader, 800);
+  });
+  setTimeout(hideLoader, 1500);
 
   /* ---------- Scroll progress + header state + back-to-top ---------- */
   var header = document.getElementById('site-header');
@@ -5089,6 +5100,8 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+</script>
+
 <!-- ============================================================
      FEATURE #4: 3D PROSPECTUS MODAL HTML
      ============================================================ -->
