@@ -137,6 +137,10 @@
   ─────────────────────────────────────────────────────────────── */
   --gold-text: #7A5C00;          /* AA on white: 6.18:1 */
   --gold-text-on-dark: #E8C97A;  /* AA on emerald-deep: 8.4:1 */
+  --gold-on-dark: #F3E5AB;       /* WCAG AAA on emerald-deep: 10.8:1 */
+  --text-on-dark: #FFFFFF;       /* WCAG AAA on emerald-deep: 15.5:1 */
+  --text-on-dark-subtle: #FAF7F1;/* WCAG AAA on emerald-deep: 14.8:1 */
+  --text-on-dark-muted: #E5E7EB; /* WCAG AAA on emerald-deep: 12.0:1 */
 
   /* ── TYPE SCALE (Issues #2) ── */
   --fs-xs:   0.72rem;   /* 11.5px */
@@ -1667,7 +1671,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
 .vision-header .big-year{
   font-family:var(--font-display);
   font-size:clamp(4rem,10vw,7rem);
-  color:rgba(11,61,46,0.14);
+  color:rgba(11,61,46,0.42);
   font-weight:700;
   line-height:1;
   position:absolute;
@@ -2419,17 +2423,11 @@ textarea:focus-visible {
 .timing-card .timing-label { color: var(--gold-text) !important; }
 .timing-card .timing-value small { color: var(--gold-text) !important; }
 
-/* Road-phase labels in Vision 2030 (on white card bg) */
-.road-card .road-phase { color: var(--gold-text) !important; }
-
 /* Eyebrows on light-bg sections */
-section:not(.achieve-section):not(.donate-section) .eyebrow { color: var(--gold-text) !important; }
+section:not(.achieve-section):not(.donate-section):not(.app-section) .eyebrow { color: var(--gold-text) !important; }
 
 /* Verse reference (A8) */
 .about-verse .verse-ref { color: var(--gold-text) !important; }
-
-/* Fees badge (light bg) */
-.fees-badge { color: var(--gold-text) !important; }
 
 /* Navigation active link */
 nav.main-nav a.is-active { color: var(--gold-text) !important; }
@@ -2545,88 +2543,250 @@ textarea:focus-visible {
 
 
 /* ================================================================
-   COMPREHENSIVE CONTRAST SWEEP — A70 through A147
+   COMPREHENSIVE CONTRAST SWEEP & ACCESSIBILITY REMEDIATION (A1–A100)
    ================================================================ */
 
-/* A70: life-card icon colour on white */
-.life-card .icon { color: var(--emerald); }
-
-/* A71: why-card number/icon */
-.why-card .icon-num { color: var(--emerald); }
-
-/* A72: feat checkmarks in app section (on app-section dark bg) */
-.app-section .feat { color: var(--ivory); }
-.app-section .feat svg { color: var(--gold-light); }
-
-/* A73-A80: Miscellaneous gold text on ivory — sweep */
+/* Light-background gold & text contrast (>= 4.5:1 AA, many >= 7:1 AAA) */
 .verse-ref { color: var(--gold-text) !important; }
 .timing-label { color: var(--gold-text) !important; }
 .timing-value small { color: var(--charcoal-soft) !important; }
-.road-phase { color: var(--gold-text) !important; }
-.fees-badge { color: var(--gold-text) !important; }
-.dash-label { color: var(--gold-text) !important; }
 .meta-label { color: var(--gold-text) !important; }
 .duration { color: var(--gold-text) !important; }
 .role { color: var(--gold-text) !important; }
-
-/* Dark-bg exceptions: keep gold-light */
-.achieve-section .label { color: rgba(248,244,236,0.85) !important; }
-.achieve-section .num { color: var(--white) !important; }
-.donate-section .src { color: rgba(248,244,236,0.7) !important; }
-.donate-section .hadith { color: var(--ivory) !important; }
-.dash-card .dash-main { color: var(--white) !important; }
-.dash-card .dash-sub { color: rgba(248,244,236,0.75) !important; }
-.topbar-track .topbar-item { color: var(--ivory) !important; }
-
-/* A81-A90: store rating, proof-divider on app-section dark bg */
-.app-rating .stars { color: var(--gold-light) !important; }
-.app-rating span { color: var(--ivory) !important; }
-.app-section .proof-divider { color: var(--ivory) !important; }
-.app-section > div > span { color: var(--ivory); }
-
-/* A91-A100: testimonials on ivory bg */
 .testi-slide .quote { color: var(--charcoal) !important; }
 .testi-slide .person { color: var(--charcoal) !important; font-weight: 700; }
 .testi-slide .role { color: var(--gold-text) !important; }
 .quote-mark { color: var(--gold-text) !important; }
-
-/* A101-A110: footer trust bar (dark bg) */
-.ft-item span { color: var(--ivory) !important; }
-
-/* A111-A120: footer grid — links on dark bg */
-.footer-col ul li a { color: rgba(248,244,236,0.75) !important; }
-.footer-col ul li a:hover { color: var(--white) !important; }
-.footer-bottom p { color: rgba(248,244,236,0.7) !important; }
-.footer-legal a { color: rgba(248,244,236,0.7) !important; }
-.footer-legal a:hover { color: var(--white) !important; }
-.footer-brand-text .ar { color: var(--gold-light) !important; }
-.footer-brand-text .en { color: var(--ivory) !important; }
-.footer-col .about-text { color: rgba(248,244,236,0.75) !important; }
-
-/* A121-A130: Contact section on white bg */
-.contact-info-item h3 { color: var(--charcoal) !important; }
-.contact-info-item p { color: var(--charcoal-soft) !important; }
-.ci-icon { color: var(--emerald) !important; }
-
-/* A131-A140: Gallery placeholder items — icon on ivory-ish bg */
-.gallery-item .icon-overlay { color: rgba(11,61,46,0.6) !important; }
-.gallery-item .tag {
-  background: var(--emerald-deep);
-  color: var(--white) !important;
-  font-size: var(--fs-xs);
-  font-weight: 600;
-}
-
-/* A141-A147: Misc form elements */
+.why-card .icon-num { color: var(--emerald); }
+.life-card .icon { color: var(--emerald); }
+.timings-note { color: var(--charcoal-soft) !important; font-size: var(--fs-sm); }
 .form-privacy { color: var(--charcoal-soft) !important; }
 .form-privacy svg { color: var(--emerald) !important; }
 .field-error { color: #b91c1c !important; font-size: var(--fs-xs); }
 .admissions-badge span { color: var(--emerald-deep) !important; }
 .demo-class-card { background: var(--ivory) !important; }
-.donate-disclaimer { color: rgba(248,244,236,0.7) !important; }
 
-/* Timings note */
-.timings-note { color: var(--charcoal-soft) !important; font-size: var(--fs-sm); }
+/* Contact section on light bg */
+.contact-info-item h3 { color: var(--charcoal) !important; }
+.contact-info-item p { color: var(--charcoal-soft) !important; }
+.ci-icon { color: var(--emerald) !important; }
+
+/* A2: Fees badge — high-contrast solid emerald badge with white text (15.5:1) */
+.fees-badge {
+  display: inline-block;
+  background: var(--emerald-deep) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--border-gold);
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* A92-A99: Vision 2030 Roadmap Phase badges (15.5:1 on all cards) */
+.road-phase {
+  display: inline-block;
+  background: var(--emerald-deep) !important;
+  color: #FFFFFF !important;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* A5: Vision 2030 watermark text */
+.vision-header .big-year {
+  color: rgba(11, 61, 46, 0.42) !important;
+}
+
+/* A1: Globe feature wrap on dark emerald background */
+.globe-feature-wrap .eyebrow {
+  color: var(--gold-on-dark) !important;
+}
+.globe-feature-wrap .eyebrow::before,
+.globe-feature-wrap .eyebrow::after {
+  background: var(--gold-on-dark) !important;
+}
+
+/* A3, A4, A66: Islamic Dashboard Cards — properly scoped light vs dark */
+.dash-card {
+  background: var(--white) !important;
+}
+.dash-card .dash-label {
+  color: var(--gold-text) !important; /* 6.18:1 on white */
+}
+.dash-card .dash-main {
+  color: var(--emerald-deep) !important; /* 15.5:1 on white */
+}
+.dash-card .dash-sub {
+  color: var(--charcoal-soft) !important; /* 5.8:1 on white */
+}
+.dash-card .dash-list li {
+  color: var(--charcoal-soft) !important;
+}
+.dash-card .dash-list li span:last-child {
+  color: var(--emerald-deep) !important;
+}
+
+/* Quote Card (dark emerald background) */
+.dash-card.quote-card {
+  background: var(--emerald-deep) !important;
+}
+.dash-card.quote-card .dash-label {
+  color: var(--gold-on-dark) !important; /* 10.8:1 on dark */
+}
+.dash-card.quote-card .dash-main {
+  color: var(--text-on-dark) !important; /* 15.5:1 on dark */
+}
+.dash-card.quote-card .dash-sub {
+  color: var(--text-on-dark-muted) !important; /* 12.0:1 on dark */
+}
+
+/* A11-A25: Hero section deterministic contrast */
+#home {
+  position: relative;
+  background-color: var(--white) !important;
+  overflow: hidden;
+}
+#home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 900px 500px at 85% -10%, rgba(201,162,75,0.08), transparent 60%),
+    radial-gradient(ellipse 700px 500px at -5% 110%, rgba(11,61,46,0.05), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+#home .container {
+  position: relative;
+  z-index: 1;
+}
+.hero-center .ar-name { color: var(--emerald-deep) !important; }
+.hero-center .en-name { color: var(--emerald-deep) !important; }
+.hero-center .tagline { color: var(--gold-text) !important; }
+.hero-center .hero-desc { color: var(--charcoal-soft) !important; }
+.hero-stats .stat .num { color: var(--emerald-deep) !important; }
+.hero-stats .stat .label { color: var(--charcoal-soft) !important; }
+
+/* A31-A60: App Showcase Section */
+.app-section {
+  position: relative;
+  background-color: var(--emerald-deep) !important;
+}
+.app-section .container {
+  position: relative;
+  z-index: 2;
+}
+.app-grid .eyebrow { color: var(--gold-on-dark) !important; }
+.app-grid .eyebrow::before, .app-grid .eyebrow::after { background: var(--gold-on-dark) !important; }
+.app-grid h2 { color: var(--text-on-dark) !important; }
+.app-grid > div > p.lead { color: var(--text-on-dark-subtle) !important; }
+.app-features .feat { color: var(--text-on-dark-subtle) !important; border-bottom: 1px solid rgba(201,162,75,0.25); }
+.app-features .feat svg { color: var(--gold-on-dark) !important; }
+.app-social-proof { color: var(--text-on-dark-subtle) !important; }
+.app-rating .stars { color: var(--gold-on-dark) !important; }
+.app-rating span { color: var(--text-on-dark-subtle) !important; }
+.proof-divider { color: rgba(243,229,171,0.6) !important; }
+.store-badge { border: 1px solid rgba(201,162,75,0.5) !important; color: var(--text-on-dark) !important; background: rgba(8,43,32,0.6); }
+.store-badge svg { color: var(--gold-on-dark) !important; }
+.store-badge .store-label small { color: var(--gold-on-dark) !important; }
+.store-badge .store-label strong { color: var(--text-on-dark) !important; }
+.phone-mock {
+  background: #062018 !important;
+  border: 7px solid #041410 !important;
+}
+.phone-mock .pm-head { color: var(--gold-on-dark) !important; }
+.phone-mock .pm-card {
+  background: #082B20 !important;
+  border: 1px solid rgba(201,162,75,0.35) !important;
+  color: var(--text-on-dark-subtle) !important;
+}
+.phone-mock .pm-card strong {
+  color: var(--gold-on-dark) !important;
+  font-weight: 700 !important;
+}
+
+/* A61-A63: Achievements Section */
+.achieve-section {
+  position: relative;
+  background-color: var(--emerald-deep) !important;
+}
+.achieve-section .container {
+  position: relative;
+  z-index: 2;
+}
+.achieve-section .eyebrow { color: var(--gold-on-dark) !important; }
+.achieve-section .eyebrow::before, .achieve-section .eyebrow::after { background: var(--gold-on-dark) !important; }
+.achieve-section h2 { color: var(--text-on-dark) !important; }
+.achieve-section .section-head p { color: var(--text-on-dark-subtle) !important; }
+.achieve-card { background: var(--emerald-deep) !important; }
+.achieve-card .num { color: var(--text-on-dark) !important; }
+.achieve-card .label { color: var(--text-on-dark-subtle) !important; }
+
+/* A72-A91: Donation Section */
+.donate-section {
+  position: relative;
+  background: var(--emerald-deep) !important;
+}
+.donate-section .container {
+  position: relative;
+  z-index: 2;
+}
+.donate-section .eyebrow { color: var(--gold-on-dark) !important; }
+.donate-section .eyebrow::before, .donate-section .eyebrow::after { background: var(--gold-on-dark) !important; }
+.donate-section h2 { color: var(--text-on-dark) !important; }
+.donate-section .section-head p { color: var(--text-on-dark-subtle) !important; }
+.donate-hadith p.hadith { color: var(--text-on-dark) !important; }
+.donate-hadith .src { color: var(--gold-on-dark) !important; }
+.donate-card {
+  background: #062018 !important;
+  border: 1px solid rgba(201,162,75,0.35) !important;
+}
+.donate-card h3 { color: var(--text-on-dark) !important; }
+.donate-card p { color: var(--text-on-dark-subtle) !important; }
+.trust-item { color: var(--text-on-dark-subtle) !important; }
+.trust-item svg { color: var(--gold-on-dark) !important; }
+.amount-chip {
+  background: #082B20 !important;
+  color: var(--text-on-dark-subtle) !important;
+  border: 1px solid var(--border-gold) !important;
+}
+.amount-chip.is-active, .amount-chip:hover {
+  background: var(--gold) !important;
+  color: #082B20 !important;
+  font-weight: 700 !important;
+  border-color: var(--gold) !important;
+}
+.donate-disclaimer { color: var(--text-on-dark-subtle) !important; opacity: 0.95; }
+
+/* A67-A71: Gallery Items */
+.gallery-item .icon-overlay { color: rgba(11,61,46,0.6) !important; }
+.gallery-item .tag {
+  background: #082B20 !important;
+  color: #FFFFFF !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600 !important;
+  z-index: 3 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Footer elements on dark bg */
+.ft-item span { color: var(--ivory) !important; }
+.footer-col ul li a { color: rgba(248,244,236,0.85) !important; }
+.footer-col ul li a:hover { color: var(--white) !important; }
+.footer-bottom p { color: rgba(248,244,236,0.8) !important; }
+.footer-legal a { color: rgba(248,244,236,0.8) !important; }
+.footer-legal a:hover { color: var(--white) !important; }
+.footer-brand-text .ar { color: var(--gold-on-dark) !important; }
+.footer-brand-text .en { color: var(--ivory) !important; }
+.footer-col .about-text { color: rgba(248,244,236,0.85) !important; }
+.topbar-track .topbar-item { color: var(--ivory) !important; }
 
 
 /* About grid: DOM order has copy first (H2 before H3 for WCAG), visual order keeps verse left on desktop */
@@ -2894,17 +3054,17 @@ textarea:focus-visible {
     <!-- 3D Interactive Globe Section -->
     <div class="globe-feature-wrap reveal" style="margin-top:40px;background:var(--emerald-deep);border:1px solid var(--border-gold);border-radius:12px;padding:30px 20px;color:var(--white);text-align:center;position:relative;overflow:hidden;">
       <div style="max-width:650px;margin:0 auto 15px auto;">
-        <p class="eyebrow" style="color:var(--gold);">Global Student Presence</p>
-        <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold-light);margin-bottom:8px;">Connecting Girls Worldwide to Sacred Knowledge</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.85);">Drag or swipe the 3D globe to explore our student locations across India, Saudi Arabia, UAE, Qatar, UK, and USA.</p>
+        <p class="eyebrow" style="color:var(--gold-on-dark);">Global Student Presence</p>
+        <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold-on-dark);margin-bottom:8px;">Connecting Girls Worldwide to Sacred Knowledge</h3>
+        <p style="font-size:0.9rem;color:var(--text-on-dark-subtle);">Drag or swipe the 3D globe to explore our student locations across India, Saudi Arabia, UAE, Qatar, UK, and USA.</p>
       </div>
       <div id="globe-3d-wrap"></div>
       <div class="globe-locations-pills" style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px;">
-        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇮🇳 Karnataka &amp; India</span>
-        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇸🇦 Saudi Arabia</span>
-        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇦🇪 UAE &amp; Qatar</span>
-        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇬🇧 United Kingdom</span>
-        <span style="background:rgba(201,162,75,0.15);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-light);">🇺🇸 United States</span>
+        <span style="background:rgba(243,229,171,0.12);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-on-dark);">🇮🇳 Karnataka &amp; India</span>
+        <span style="background:rgba(243,229,171,0.12);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-on-dark);">🇸🇦 Saudi Arabia</span>
+        <span style="background:rgba(243,229,171,0.12);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-on-dark);">🇦🇪 UAE &amp; Qatar</span>
+        <span style="background:rgba(243,229,171,0.12);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-on-dark);">🇬🇧 United Kingdom</span>
+        <span style="background:rgba(243,229,171,0.12);border:1px solid var(--border-gold);padding:4px 14px;border-radius:20px;font-size:0.82rem;color:var(--gold-on-dark);">🇺🇸 United States</span>
       </div>
     </div>
   </div>
@@ -4718,48 +4878,94 @@ textarea:focus-visible {
 
   var contactForm = document.getElementById('contactForm');
   var contactStatus = document.getElementById('contactStatus');
-  contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var cName = document.getElementById('cName');
-    var cEmail = document.getElementById('cEmail');
-    var cSubject = document.getElementById('cSubject');
-    var cMsg = document.getElementById('cMsg');
+  if(contactForm){
+    var cNameInput = document.getElementById('cName');
+    var cEmailInput = document.getElementById('cEmail');
+    var cMsgInput = document.getElementById('cMsg');
 
-    if(!cName.value.trim() || !cEmail.value.trim() || !cMsg.value.trim()){
-      contactStatus.textContent = 'Please fill in your name, email, and message.';
-      contactStatus.style.color = '#B3433D';
-      return;
-    }
-
-    var submitBtn = contactForm.querySelector('button[type="submit"]');
-    var originalBtnText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    contactStatus.textContent = '';
-    contactStatus.style.color = '';
-
-    submitToWeb3Forms({
-      subject: 'New Contact Message — Madarsa Tus Salikat Lil Banat',
-      from_name: cName.value.trim(),
-      email: cEmail.value.trim(),
-      contact_subject: cSubject.value.trim(),
-      message: cMsg.value.trim()
-    }).then(function(){
-      contactStatus.textContent = 'Thank you! Your message has been sent.';
-      contactStatus.style.color = '';
-      contactForm.reset();
-    }).catch(function(err){
-      if(err.message === 'NOT_CONFIGURED'){
-        contactStatus.textContent = 'Form backend not yet connected — please message us directly on WhatsApp for now.';
-      } else {
-        contactStatus.textContent = 'Something went wrong sending your message. Please try again or contact us on WhatsApp.';
-      }
-      contactStatus.style.color = '#B3433D';
-    }).finally(function(){
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalBtnText;
+    [cNameInput, cEmailInput, cMsgInput].forEach(function(field){
+      if(!field) return;
+      field.addEventListener('input', function(){
+        if(field.getAttribute('aria-invalid') === 'true'){
+          var errEl = document.getElementById(field.id + 'Err');
+          if(errEl && field.value.trim()){
+            setFieldError(field, errEl, '');
+          }
+        }
+      });
     });
-  });
+
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var cName = document.getElementById('cName');
+      var cNameErr = document.getElementById('cNameErr');
+      var cEmail = document.getElementById('cEmail');
+      var cEmailErr = document.getElementById('cEmailErr');
+      var cSubject = document.getElementById('cSubject');
+      var cMsg = document.getElementById('cMsg');
+      var cMsgErr = document.getElementById('cMsgErr');
+
+      var valid = true;
+      if(!cName.value.trim()){
+        setFieldError(cName, cNameErr, 'Please enter your name.');
+        valid = false;
+      } else {
+        setFieldError(cName, cNameErr, '');
+      }
+
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!cEmail.value.trim()){
+        setFieldError(cEmail, cEmailErr, 'Please enter your email address.');
+        valid = false;
+      } else if(!emailPattern.test(cEmail.value.trim())){
+        setFieldError(cEmail, cEmailErr, 'Please enter a valid email address.');
+        valid = false;
+      } else {
+        setFieldError(cEmail, cEmailErr, '');
+      }
+
+      if(!cMsg.value.trim()){
+        setFieldError(cMsg, cMsgErr, 'Please enter your message.');
+        valid = false;
+      } else {
+        setFieldError(cMsg, cMsgErr, '');
+      }
+
+      if(!valid){
+        contactStatus.textContent = '';
+        return;
+      }
+
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      contactStatus.textContent = '';
+      contactStatus.style.color = '';
+
+      submitToWeb3Forms({
+        subject: 'New Contact Message — Madarsa Tus Salikat Lil Banat',
+        from_name: cName.value.trim(),
+        email: cEmail.value.trim(),
+        contact_subject: cSubject.value.trim(),
+        message: cMsg.value.trim()
+      }).then(function(){
+        contactStatus.textContent = 'Thank you! Your message has been sent.';
+        contactStatus.style.color = '';
+        contactForm.reset();
+      }).catch(function(err){
+        if(err.message === 'NOT_CONFIGURED'){
+          contactStatus.textContent = 'Form backend not yet connected — please message us directly on WhatsApp for now.';
+        } else {
+          contactStatus.textContent = 'Something went wrong sending your message. Please try again or contact us on WhatsApp.';
+        }
+        contactStatus.style.color = '#B3433D';
+      }).finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
+    });
+  }
 
   var newsletterForm = document.getElementById('newsletterForm');
   var newsletterStatus = document.getElementById('newsletterStatus');
@@ -5816,27 +6022,83 @@ if ('serviceWorker' in navigator) {
 
 
 <script>
-/* NAV DROPDOWN TOGGLE */
+/* NAV DROPDOWN TOGGLE (A6: Accessible keyboard navigation & focus restoration) */
 (function(){
   var btn = document.querySelector('.nav-more-btn');
   var menu = document.getElementById('navMoreMenu');
   if(!btn || !menu) return;
-  function closeMenu(){
+  var items = Array.from(menu.querySelectorAll('a'));
+
+  function closeMenu(restoreFocus){
+    if(!menu.classList.contains('is-open')) return;
     menu.classList.remove('is-open');
     btn.setAttribute('aria-expanded','false');
+    if(restoreFocus) {
+      try { btn.focus(); } catch(e){}
+    }
   }
+
+  function openMenu(focusFirst){
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded','true');
+    if(focusFirst && items.length > 0){
+      try { items[0].focus(); } catch(e){}
+    }
+  }
+
   btn.addEventListener('click', function(e){
     e.stopPropagation();
-    var open = menu.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var isOpen = menu.classList.contains('is-open');
+    if(isOpen){
+      closeMenu(false);
+    } else {
+      openMenu(false);
+    }
   });
-  document.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
+
+  btn.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown' || e.key === 'Down'){
+      e.preventDefault();
+      openMenu(true);
+    } else if(e.key === 'Escape'){
+      closeMenu(true);
+    }
   });
-  // Close when a menu link is clicked
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
+
+  menu.addEventListener('keydown', function(e){
+    var idx = items.indexOf(document.activeElement);
+    if(e.key === 'ArrowDown' || e.key === 'Down'){
+      e.preventDefault();
+      var next = (idx + 1) % items.length;
+      items[next].focus();
+    } else if(e.key === 'ArrowUp' || e.key === 'Up'){
+      e.preventDefault();
+      var prev = (idx - 1 + items.length) % items.length;
+      items[prev].focus();
+    } else if(e.key === 'Escape'){
+      e.preventDefault();
+      closeMenu(true);
+    } else if(e.key === 'Tab'){
+      closeMenu(false);
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target) && !menu.contains(e.target)){
+      closeMenu(false);
+    }
+  });
+
+  document.addEventListener('focusin', function(e){
+    if(!btn.contains(e.target) && !menu.contains(e.target)){
+      closeMenu(false);
+    }
+  });
+
+  items.forEach(function(a){
+    a.addEventListener('click', function(){
+      closeMenu(false);
+    });
   });
 })();
 </script>
