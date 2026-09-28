@@ -1062,7 +1062,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
    ============================================================ */
 .ustadah-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:26px;
 }
 .ustadah-card{
@@ -2643,10 +2643,8 @@ textarea:focus-visible {
 <body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
-<a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="loader" aria-hidden="true">
-  <span class="seal">
+  <span class="seal" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="1.2"/>
       <circle cx="50" cy="50" r="38" stroke="#C9A24B" stroke-width="0.6"/>
@@ -2656,7 +2654,11 @@ textarea:focus-visible {
         <path d="M8 50 L28 42 L22 50 L28 58 Z"/>
         <path d="M92 50 L72 42 L78 50 L72 58 Z"/>
       </g>
-      <text x="50" y="59" font-family="Amiri, serif" font-size="30" fill="#C9A24B" text-anchor="middle">س</text>
+      <g stroke="#C9A24B" stroke-width="1.2" fill="none">
+        <rect x="41" y="41" width="18" height="18"/>
+        <rect x="41" y="41" width="18" height="18" transform="rotate(45 50 50)"/>
+        <circle cx="50" cy="50" r="3.5" fill="#C9A24B"/>
+      </g>
     </svg>
   </span>
   <p>Madarsa Tus Salikat Lil Banat</p>
@@ -2706,7 +2708,7 @@ textarea:focus-visible {
 <header id="site-header">
   <div class="nav-inner">
     <a href="#home" class="brand" aria-label="Madarsa Tus Salikat Lil Banat — Home">
-      <span class="seal">
+      <span class="seal" aria-hidden="true">
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <circle cx="50" cy="50" r="47" stroke="#0B3D2E" stroke-width="1.4"/>
           <circle cx="50" cy="50" r="38" fill="#0B3D2E"/>
@@ -2716,7 +2718,11 @@ textarea:focus-visible {
             <path d="M8 50 L28 42 L22 50 L28 58 Z"/>
             <path d="M92 50 L72 42 L78 50 L72 58 Z"/>
           </g>
-          <text x="50" y="60" font-family="Amiri, serif" font-size="32" fill="#E2C77F" text-anchor="middle">س</text>
+          <g stroke="#E2C77F" stroke-width="1.2" fill="none">
+            <rect x="41" y="41" width="18" height="18"/>
+            <rect x="41" y="41" width="18" height="18" transform="rotate(45 50 50)"/>
+            <circle cx="50" cy="50" r="3.5" fill="#E2C77F"/>
+          </g>
         </svg>
       </span>
       <span class="brand-text">
@@ -2756,9 +2762,9 @@ textarea:focus-visible {
         <button data-lang="ar" aria-label="Arabic (العربية)" aria-pressed="false">AR</button>
         <button data-lang="kn" aria-label="Kannada (ಕನ್ನಡ)" aria-pressed="false">ಕ</button>
       </div>
-      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm nav-mobile-only" download style="margin-top:10px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;">
+      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm nav-mobile-only" download style="margin-top:10px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;" title="Download Android App v1.0.3">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Download App (APK)</span>
+        <span data-i18n="header_app_btn">Android App</span>
       </a>
       <a href="#admissions" class="btn btn--primary btn--sm nav-mobile-only" style="margin-top:8px;width:100%;">Apply Now</a>
     </nav>
@@ -2771,9 +2777,9 @@ textarea:focus-visible {
         <button data-lang="ar" aria-label="Arabic (العربية)" aria-pressed="false">AR</button>
         <button data-lang="kn" aria-label="Kannada (ಕನ್ನಡ)" aria-pressed="false">ಕ</button>
       </div>
-      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm" download style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;border:none;padding:8px 14px;" title="Download Android App APK v1.0.3">
+      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm" download style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;border:none;padding:8px 14px;" title="Download Android App v1.0.3">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>App APK</span>
+        <span data-i18n="header_app_btn">Android App</span>
       </a>
       <a href="#admissions" class="btn btn--primary btn--sm">Apply Now</a>
     </div>
@@ -2806,9 +2812,9 @@ textarea:focus-visible {
       </p>
       <div class="hero-actions reveal reveal-delay-4">
         <a href="#admissions" class="btn btn--primary" data-i18n="hero_apply">Apply Now</a>
-        <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="btn btn--gold" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082b20;border:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;">
+        <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="btn btn--gold" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082b20;border:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;" title="Download Android App v1.0.3">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#082b20" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>Download App (APK)</span>
+          <span>Download Android App</span>
         </a>
         <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Inquiry</a>
         <a href="#courses" class="btn btn--outline" data-i18n="hero_courses">View Courses</a>
@@ -3329,12 +3335,6 @@ textarea:focus-visible {
         <span class="role">Muballigha Course</span>
         <p class="bio">Trains students in Da'wah, public speaking, and confident Islamic guidance for their communities.</p>
       </div>
-      <div class="ustadah-card">
-        <div class="avatar-ring" aria-hidden="true">+</div>
-        <h3>Ustadha — Name Pending</h3>
-        <span class="role">Kids Deeniyat</span>
-        <p class="bio">Brings warmth and creativity to teaching young girls the foundations of their faith with joy. <!-- TODO: replace with real Ustadha name and bio --></p>
-      </div>
     </div>
   </div>
 </section>
@@ -3372,9 +3372,9 @@ textarea:focus-visible {
           <span>2,000+ downloads</span>
         </div>
         <div class="app-store-row">
-          <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="store-badge" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082B20;border-color:#C9A24B;box-shadow:0 4px 15px rgba(201,162,75,0.35);">
+          <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="store-badge" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082B20;border-color:#C9A24B;box-shadow:0 4px 15px rgba(201,162,75,0.35);" title="Download Android App v1.0.3">
             <svg viewBox="0 0 24 24" fill="none" stroke="#082B20" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="color:#082B20;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span class="store-label"><small style="color:#082B20;font-weight:700;">Direct Install</small><strong style="color:#082B20;">Download APK (v1.0.3)</strong></span>
+            <span class="store-label"><small style="color:#082B20;font-weight:700;">Direct Install</small><strong style="color:#082B20;">Download Android App</strong></span>
           </a>
           <a href="https://play.google.com/store" target="_blank" rel="noopener" class="store-badge">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 2.5v19a.5.5 0 00.8.4l16-9.5a.5.5 0 000-.8l-16-9.5a.5.5 0 00-.8.4z"/></svg>
@@ -3524,7 +3524,7 @@ textarea:focus-visible {
             <textarea id="admMessage" name="admMessage" placeholder="Tell us about your learning goals or any questions..." data-i18n-placeholder="adm_msg_ph"></textarea>
           </div>
           <div class="form-foot">
-            <button type="submit" class="btn btn--primary" data-i18n="form_submit">Submit Inquiry</button>
+            <button type="submit" class="btn btn--primary" data-i18n="form_submit">Send Inquiry</button>
             <span id="admissionStatus" role="status" aria-live="polite"></span>
           </div>
           <p class="form-privacy">
@@ -4122,11 +4122,15 @@ textarea:focus-visible {
     <div class="footer-grid">
       <div class="footer-col">
         <div class="footer-brand">
-          <span class="seal">
+          <span class="seal" aria-hidden="true">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="1.2"/>
               <circle cx="50" cy="50" r="38" fill="#0A2E22"/>
-              <text x="50" y="60" font-family="Amiri, serif" font-size="32" fill="#E2C77F" text-anchor="middle">س</text>
+              <g stroke="#E2C77F" stroke-width="1.2" fill="none">
+                <rect x="41" y="41" width="18" height="18"/>
+                <rect x="41" y="41" width="18" height="18" transform="rotate(45 50 50)"/>
+                <circle cx="50" cy="50" r="3.5" fill="#E2C77F"/>
+              </g>
             </svg>
           </span>
           <span class="footer-brand-text">
@@ -4145,7 +4149,7 @@ textarea:focus-visible {
       <div class="footer-col">
         <h4 data-i18n="footer_quick">Quick Links</h4>
         <ul>
-          <li><a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download style="color:var(--gold);font-weight:600;">Download App (APK v1.0.3)</a></li>
+          <li><a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download style="color:var(--gold);font-weight:600;">Download Android App (v1.0.3)</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#ustadahs">Our Ustadahs</a></li>
           <li><a href="#admissions">Admissions</a></li>
@@ -4185,7 +4189,7 @@ textarea:focus-visible {
           <p class="hidden" style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <label for="newsletterEmail" class="sr-only">Email address</label>
           <input type="email" id="newsletterEmail" name="email" placeholder="Your email address" autocomplete="email" data-i18n-placeholder="footer_email_ph" required aria-describedby="newsletterStatus">
-          <button type="submit" data-i18n="footer_subscribe">Subscribe</button>
+          <button type="submit" data-i18n="footer_subscribe">Join Newsletter</button>
         </form>
         <p class="footer-newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></p>
       </div>
@@ -4822,6 +4826,7 @@ window.TRANSLATIONS = {
   nav_about:       {en:'About',ur:'تعارف',hi:'परिचय',ar:'عن المدرسة',kn:'ನಮ್ಮ ಬಗ್ಗೆ'},
   nav_courses:     {en:'Courses',ur:'کورسز',hi:'कोर्स',ar:'المقررات',kn:'ಕೋರ್ಸ್‌ಗಳು'},
   nav_app:         {en:'Mobile App',ur:'موبائل ایپ',hi:'मोबाइल ऐप',ar:'التطبيق',kn:'ಮೊಬೈಲ್ ಆ್ಯಪ್'},
+  header_app_btn:  {en:'Android App',ur:'اینڈرائیڈ ایپ',hi:'एंड्रॉइड ऐप',ar:'تطبيق أندرويد',kn:'ಆಂಡ್ರಾಯ್ಡ್ ಆ್ಯಪ್'},
   nav_ustadahs:    {en:'Ustadahs',ur:'اساتذہ',hi:'उस्तादाह',ar:'المعلمات',kn:'ಉಸ್ತಾದಾಹ್'},
   nav_admissions:  {en:'Admissions',ur:'داخلہ',hi:'प्रवेश',ar:'القبول',kn:'ಪ್ರವೇಶ'},
   nav_achievements:{en:'Achievements',ur:'کامیابیاں',hi:'उपलब्धियाँ',ar:'الإنجازات',kn:'ಸಾಧನೆಗಳು'},
@@ -4900,7 +4905,7 @@ window.TRANSLATIONS = {
   form_whatsapp:   {en:'WhatsApp Number',ur:'واٹس ایپ نمبر',hi:'WhatsApp नंबर',ar:'رقم واتساب',kn:'WhatsApp ಸಂಖ್ಯೆ'},
   form_course:     {en:'Course Selection',ur:'کورس کا انتخاب',hi:'कोर्स चुनें',ar:'اختيار المقرر',kn:'ಕೋರ್ಸ್ ಆಯ್ಕೆ'},
   form_msg:        {en:'Message (Optional)',ur:'پیغام (اختیاری)',hi:'संदेश (वैकल्पिक)',ar:'رسالة (اختيارية)',kn:'ಸಂದೇಶ (ಐಚ್ಛಿಕ)'},
-  form_submit:     {en:'Submit Inquiry',ur:'درخواست بھیجیں',hi:'जानकारी भेजें',ar:'أرسلي الاستفسار',kn:'ವಿಚಾರಣೆ ಸಲ್ಲಿಸಿ'},
+  form_submit:     {en:'Send Inquiry',ur:'درخواست بھیجیں',hi:'जानकारी भेजें',ar:'أرسلي الاستفسار',kn:'ವಿಚಾರಣೆ ಸಲ್ಲಿಸಿ'},
   form_privacy:    {en:'Your details are kept private and used only to process your admission. We never share your contact information.',ur:'آپ کی معلومات نجی رکھی جاتی ہیں اور صرف داخلے کے لیے استعمال ہوتی ہیں۔',hi:'आपकी जानकारी निजी रखी जाती है और केवल प्रवेश प्रक्रिया के लिए उपयोग की जाती है।',ar:'بياناتك تبقى خاصة وتُستخدم فقط لمعالجة قبولك.',kn:'ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಖಾಸಗಿಯಾಗಿ ಇಡಲಾಗಿದ್ದು ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆಗೆ ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ.'},
   select_default:  {en:'Select a course',ur:'کورس منتخب کریں',hi:'एक कोर्स चुनें',ar:'اختاري مقرراً',kn:'ಕೋರ್ಸ್ ಆಯ್ಕೆ ಮಾಡಿ'},
   adm_msg_ph:      {en:'Tell us about your learning goals or any questions...',ur:'اپنے تعلیمی اہداف یا سوالات بتائیں...',hi:'अपने सीखने के लक्ष्यों या सवालों के बारे में बताएं...',ar:'أخبرينا عن أهدافكِ الدراسية أو أي أسئلة...',kn:'ನಿಮ್ಮ ಕಲಿಕಾ ಗುರಿಗಳ ಬಗ್ಗೆ ತಿಳಿಸಿ...'},
@@ -4985,7 +4990,7 @@ window.TRANSLATIONS = {
   footer_stay:     {en:'Stay Updated',ur:'باخبر رہیں',hi:'अपडेट रहें',ar:'ابق على اطلاع',kn:'ನವೀಕೃತವಾಗಿ ಇರಿ'},
   footer_newsletter_p:{en:'Get news on admissions, Jalsa dates, and Vision 2030 progress.',ur:'داخلہ، جلسہ تاریخوں اور وژن 2030 پیشرفت کی خبریں پائیں۔',hi:'प्रवेश, जलसा और विज़न 2030 पर समाचार प्राप्त करें।',ar:'احصل على أخبار القبول والجلسات وتقدم رؤية 2030.',kn:'ಪ್ರವೇಶ, ಜಲ್ಸಾ ಮತ್ತು ದೃಷ್ಟಿ 2030 ಬಗ್ಗೆ ಸುದ್ದಿ ಪಡೆಯಿರಿ.'},
   footer_email_ph: {en:'Your email address',ur:'آپ کا ای میل',hi:'आपका ईमेल पता',ar:'بريدك الإلكتروني',kn:'ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸ'},
-  footer_subscribe:{en:'Subscribe',ur:'سبسکرائب',hi:'सब्सक्राइब',ar:'اشترك',kn:'ಚಂದಾದಾರರಾಗಿ'},
+  footer_subscribe:{en:'Join Newsletter',ur:'نیوز لیٹر میں شامل ہوں',hi:'न्यूज़लेटर से जुड़ें',ar:'انضمي للنشرة الإخبارية',kn:'ನ್ಯೂಸ್‌ಲೆಟರ್‌ಗೆ ಸೇರಿ'},
   footer_copyright:{en:'© 2026 Madarsa Tus Salikat Lil Banat. All rights reserved.',ur:'© 2026 مدرسۃ السالکات للبنات۔ جملہ حقوق محفوظ۔',hi:'© 2026 मदरसा तुस सालिकात लिल बनात। सर्वाधिकार सुरक्षित।',ar:'© 2026 مدرسة السالكات للبنات. جميع الحقوق محفوظة.',kn:'© 2026 ಮದರಸಾ ತುಸ್ ಸಾಲಿಕಾತ್. ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.'},
   footer_privacy:  {en:'Privacy Policy',ur:'رازداری پالیسی',hi:'गोपनीयता नीति',ar:'سياسة الخصوصية',kn:'ಗೌಪ್ಯತಾ ನೀತಿ'},
   footer_terms:    {en:'Terms of Service',ur:'خدمات کی شرائط',hi:'सेवा की शर्तें',ar:'شروط الخدمة',kn:'ಸೇವಾ ನಿಯಮಗಳು'},
@@ -5329,8 +5334,8 @@ window.addEventListener('DOMContentLoaded', function() {
         <!-- Page 1 (Cover) -->
         <div class="page-3d p1 active" style="z-index: 5;">
           <div class="prospectus-cover">
-            <span class="seal" style="margin-bottom:12px;display:inline-block;">
-              <svg viewBox="0 0 100 100" width="54" height="54" fill="none" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="2"/><text x="50" y="62" font-family="Amiri, serif" font-size="45" fill="#C9A24B" text-anchor="middle">س</text></svg>
+            <span class="seal" aria-hidden="true" style="margin-bottom:12px;display:inline-block;">
+              <svg viewBox="0 0 100 100" width="54" height="54" fill="none" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="47" stroke="#C9A24B" stroke-width="2"/><g stroke="#C9A24B" stroke-width="1.6" fill="none"><rect x="39" y="39" width="22" height="22"/><rect x="39" y="39" width="22" height="22" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="4" fill="#C9A24B"/></g></svg>
             </span>
             <h2 id="prospectusModalTitle" style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold-light);margin-bottom:4px;">MADARSA TUS SALIKAT LIL BANAT</h2>
             <p style="color:var(--gold);font-weight:600;font-size:0.85rem;margin-bottom:12px;">مدرسة السالكات للبنات</p>
