@@ -642,10 +642,11 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   margin-bottom:22px;
 }
 .hero-center .tagline{
-  font-size:1.1rem;
+  font-size:1.15rem;
   font-style:italic;
-  color:var(--gold);
+  color:var(--gold-text);
   font-family:var(--font-display);
+  font-weight:500;
   margin-bottom:6px;
 }
 .hero-center .tagline-ur{
@@ -1243,13 +1244,14 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
 .step-num{
   width:44px;height:44px;
   border-radius:50%;
-  border:1px solid var(--gold);
-  color:var(--gold);
+  border:1.5px solid var(--gold-text);
+  color:var(--gold-text);
+  background:rgba(122,92,0,0.06);
   font-family:var(--font-display);
-  font-weight:600;
+  font-weight:700;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
-  font-size:1.05rem;
+  font-size:1.1rem;
 }
 .step-text h3{font-size:1.08rem;margin-bottom:6px;}
 .step-text p{font-size:0.9rem;color:var(--charcoal-soft);}
@@ -1763,7 +1765,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
 }
 .faq-q .plus{
   font-size:1.4rem;
-  color:var(--gold);
+  color:var(--gold-text);
   transition:transform var(--transition);
   flex-shrink:0;
   margin-left:20px;
@@ -2626,6 +2628,16 @@ textarea:focus-visible {
 /* Timings note */
 .timings-note { color: var(--charcoal-soft) !important; font-size: var(--fs-sm); }
 
+
+/* About grid: DOM order has copy first (H2 before H3 for WCAG), visual order keeps verse left on desktop */
+.about-grid .about-verse { grid-column: 1; grid-row: 1; }
+.about-grid .about-copy  { grid-column: 2; grid-row: 1; }
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-grid .about-copy  { grid-column: 1; grid-row: 1; }
+  .about-grid .about-verse { grid-column: 1; grid-row: 2; }
+}
+
 </style>
 </head>
 <body>
@@ -2737,12 +2749,12 @@ textarea:focus-visible {
           <li role="none"><a href="#faq" role="menuitem" data-i18n="nav_faq">FAQ</a></li>
         </ul>
       </div>
-      <div class="lang-switch nav-mobile-only" role="group" aria-label="Language switch">
-        <button class="is-active" data-lang="en">EN</button>
-        <button data-lang="ur">UR</button>
-        <button data-lang="hi">HI</button>
-        <button data-lang="ar">AR</button>
-        <button data-lang="kn">ಕ</button>
+      <div class="lang-switch nav-mobile-only" role="group" aria-label="Language selection">
+        <button class="is-active" data-lang="en" aria-label="English" aria-pressed="true">EN</button>
+        <button data-lang="ur" aria-label="Urdu (اردو)" aria-pressed="false">UR</button>
+        <button data-lang="hi" aria-label="Hindi (हिन्दी)" aria-pressed="false">HI</button>
+        <button data-lang="ar" aria-label="Arabic (العربية)" aria-pressed="false">AR</button>
+        <button data-lang="kn" aria-label="Kannada (ಕನ್ನಡ)" aria-pressed="false">ಕ</button>
       </div>
       <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm nav-mobile-only" download style="margin-top:10px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -2752,12 +2764,12 @@ textarea:focus-visible {
     </nav>
 
     <div class="nav-actions">
-      <div class="lang-switch" role="group" aria-label="Language switch">
-        <button class="is-active" data-lang="en">EN</button>
-        <button data-lang="ur">UR</button>
-        <button data-lang="hi">HI</button>
-        <button data-lang="ar">AR</button>
-        <button data-lang="kn">ಕ</button>
+      <div class="lang-switch" role="group" aria-label="Language selection">
+        <button class="is-active" data-lang="en" aria-label="English" aria-pressed="true">EN</button>
+        <button data-lang="ur" aria-label="Urdu (اردو)" aria-pressed="false">UR</button>
+        <button data-lang="hi" aria-label="Hindi (हिन्दी)" aria-pressed="false">HI</button>
+        <button data-lang="ar" aria-label="Arabic (العربية)" aria-pressed="false">AR</button>
+        <button data-lang="kn" aria-label="Kannada (ಕನ್ನಡ)" aria-pressed="false">ಕ</button>
       </div>
       <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm" download style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;border:none;padding:8px 14px;" title="Download Android App APK v1.0.3">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -2800,7 +2812,7 @@ textarea:focus-visible {
         </a>
         <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Inquiry</a>
         <a href="#courses" class="btn btn--outline" data-i18n="hero_courses">View Courses</a>
-        <button type="button" id="openSanadBtn" class="btn btn--gold" style="background:rgba(201,162,75,0.15);color:var(--gold-light);border:1px solid var(--gold);font-weight:600;display:inline-flex;align-items:center;gap:6px;">
+        <button type="button" id="openSanadBtn" class="btn btn--gold" style="background:rgba(201,162,75,0.12);color:var(--emerald-deep);border:1px solid var(--gold);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
           <span>📜 Generate Sanad</span>
         </button>
       </div>
@@ -2832,7 +2844,22 @@ textarea:focus-visible {
      ============================================================ -->
 <section id="about" class="section">
   <div class="container">
-    <div class="about-grid">
+        <div class="about-grid">
+      <div class="about-copy reveal reveal-delay-2">
+        <p class="eyebrow" data-i18n="about_eyebrow">About The Madrasa</p>
+        <h2 data-i18n="about_h2">A Sanctuary of Sacred Learning, Built for Girls</h2>
+        <p>Madarsa Tus Salikat Lil Banat was founded with a singular conviction: that the Islamic education of girls deserves the same rigor, structure, and excellence historically reserved for institutional learning — delivered with complete privacy, dignity, and care.</p>
+        <p>For more than five years, we have served as an exclusively online, girls-only madrasa, welcoming students from across India and from Muslim communities around the world. Every class, every Ustadha, and every administrative process has been built around a single environment of safety: a space where mothers, daughters, and working women alike can pursue serious Islamic scholarship without compromise to their privacy or their daily responsibilities.</p>
+        <p>Our curriculum and rulings follow the Maslak of Ahlus Sunnah wal Jama'ah, specifically Maslak Aala Hazrat, and the fiqh of Imam Azam Abu Hanifa (R.A.). Classes are conducted live with experienced Ustadahs, supported by recorded lessons for revision and one-on-one personal guidance for every student's individual pace and circumstances.</p>
+        <div class="about-tags">
+          <span>Ahlus Sunnah wal Jama'ah</span>
+          <span>Maslak Aala Hazrat</span>
+          <span>Girls-Only Environment</span>
+          <span>Live + Recorded Classes</span>
+          <span>Personal Guidance</span>
+        </div>
+      </div>
+
       <div class="about-verse reveal">
         <p class="verse-ar" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p>
         <p class="verse-ref">Surah Al-'Alaq, 96:1</p>
@@ -2854,21 +2881,6 @@ textarea:focus-visible {
             <h3>Future Goals</h3>
             <p>A physical campus, hostel, and library extending this mission into a permanent institutional home — see Vision 2030.</p>
           </div>
-        </div>
-      </div>
-
-      <div class="about-copy reveal reveal-delay-2">
-        <p class="eyebrow" data-i18n="about_eyebrow">About The Madrasa</p>
-        <h2 data-i18n="about_h2">A Sanctuary of Sacred Learning, Built for Girls</h2>
-        <p>Madarsa Tus Salikat Lil Banat was founded with a singular conviction: that the Islamic education of girls deserves the same rigor, structure, and excellence historically reserved for institutional learning — delivered with complete privacy, dignity, and care.</p>
-        <p>For more than five years, we have served as an exclusively online, girls-only madrasa, welcoming students from across India and from Muslim communities around the world. Every class, every Ustadha, and every administrative process has been built around a single environment of safety: a space where mothers, daughters, and working women alike can pursue serious Islamic scholarship without compromise to their privacy or their daily responsibilities.</p>
-        <p>Our curriculum and rulings follow the Maslak of Ahlus Sunnah wal Jama'ah, specifically Maslak Aala Hazrat, and the fiqh of Imam Azam Abu Hanifa (R.A.). Classes are conducted live with experienced Ustadahs, supported by recorded lessons for revision and one-on-one personal guidance for every student's individual pace and circumstances.</p>
-        <div class="about-tags">
-          <span>Ahlus Sunnah wal Jama'ah</span>
-          <span>Maslak Aala Hazrat</span>
-          <span>Girls-Only Environment</span>
-          <span>Live + Recorded Classes</span>
-          <span>Personal Guidance</span>
         </div>
       </div>
     </div>
@@ -3084,17 +3096,17 @@ textarea:focus-visible {
           <li>Progressive levels from beginner to advanced Qirat</li>
           <li>Live listening sessions with direct feedback</li>
         </ul>
-        <div class="qirat-audio-preview" style="margin-top:16px;padding:12px;background:var(--ivory);border-radius:6px;border:1px solid var(--border-gold-soft);">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:0.85rem;font-weight:600;color:var(--emerald);display:flex;align-items:center;gap:6px;">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <div class="qirat-audio-preview" style="margin-top:16px;padding:14px;background:var(--ivory);border-radius:8px;border:1px solid var(--border-gold-soft);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:0.85rem;font-weight:600;color:var(--emerald-deep);display:flex;align-items:center;gap:6px;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
               Sample Tajweed Recitation
             </span>
-            <span style="font-size:0.75rem;color:var(--gold-soft);font-weight:600;">Surah Al-Fatihah</span>
+            <span style="font-size:0.82rem;color:var(--gold-text);font-weight:600;">Surah Al-Fatihah</span>
           </div>
           <audio id="qiratAudio" preload="none" src="https://cdn.islamicfinder.org/quran/audio/128/ar.alafasy/001.mp3"></audio>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <button type="button" id="playQiratBtn" style="background:var(--emerald);color:var(--white);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button type="button" id="playQiratBtn" aria-label="Play sample Tajweed recitation of Surah Al-Fatihah" style="background:var(--emerald);color:var(--white);border-radius:50%;width:44px;height:44px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;border:none;font-size:0.95rem;">
               ▶
             </button>
             <div style="flex:1;height:4px;background:rgba(11,61,46,0.15);border-radius:2px;overflow:hidden;position:relative;">
@@ -3825,7 +3837,7 @@ textarea:focus-visible {
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase1">Phase 1 · 2026–2027</span>
-          <h3 data-i18n="vision_campus">Permanent Campus</h4>
+          <h3 data-i18n="vision_campus">Permanent Campus</h3>
           <p>A dedicated, purpose-built campus for in-person classes, examinations, and gatherings — a permanent home for the madrasa.</p>
         </div>
         <span class="road-dot"></span>
@@ -3835,7 +3847,7 @@ textarea:focus-visible {
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 1 · 2026–2027</span>
-          <h3 data-i18n="vision_hostel">Residential Hostel</h4>
+          <h3 data-i18n="vision_hostel">Residential Hostel</h3>
           <p>Safe, supervised hostel accommodation enabling out-of-state and international students to study in residence.</p>
         </div>
         <div class="spacer"></div>
@@ -3843,7 +3855,7 @@ textarea:focus-visible {
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase2">Phase 2 · 2027–2028</span>
-          <h3 data-i18n="vision_library">Islamic Library</h4>
+          <h3 data-i18n="vision_library">Islamic Library</h3>
           <p>A comprehensive physical and digital library of classical and contemporary Islamic scholarship for student research.</p>
         </div>
         <span class="road-dot"></span>
@@ -3853,7 +3865,7 @@ textarea:focus-visible {
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 2 · 2027–2028</span>
-          <h3 data-i18n="vision_schol">Scholarships</h4>
+          <h3 data-i18n="vision_schol">Scholarships</h3>
           <p>A dedicated scholarship fund ensuring no deserving student is ever turned away due to financial hardship.</p>
         </div>
         <div class="spacer"></div>
@@ -3861,7 +3873,7 @@ textarea:focus-visible {
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase3">Phase 3 · 2028–2030</span>
-          <h3 data-i18n="vision_tech">Technology Expansion</h4>
+          <h3 data-i18n="vision_tech">Technology Expansion</h3>
           <p>Advanced learning infrastructure, an expanded mobile app, and AI-assisted personalised learning tools.</p>
         </div>
         <span class="road-dot"></span>
@@ -3871,7 +3883,7 @@ textarea:focus-visible {
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 3 · 2028–2030</span>
-          <h3 data-i18n="vision_comm">Community Development</h4>
+          <h3 data-i18n="vision_comm">Community Development</h3>
           <p>Outreach programs extending Islamic education and support services to underserved communities nationwide.</p>
         </div>
         <div class="spacer"></div>
@@ -4490,7 +4502,9 @@ textarea:focus-visible {
 
     /* sync button active states */
     document.querySelectorAll('.lang-switch button').forEach(function(b) {
-      b.classList.toggle('is-active', b.getAttribute('data-lang') === lang);
+      var isActive = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('is-active', isActive);
+      b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
     /* re-sync WhatsApp links */
@@ -4595,9 +4609,11 @@ textarea:focus-visible {
     if(message){
       group.classList.add('has-error');
       errorEl.textContent = message;
+      input.setAttribute('aria-invalid', 'true');
     } else {
       group.classList.remove('has-error');
       errorEl.textContent = '';
+      input.removeAttribute('aria-invalid');
     }
   }
 
@@ -4687,7 +4703,7 @@ textarea:focus-visible {
     }).catch(function(err){
       console.error('[Admission Submit Error]', err);
       var waMsg = encodeURIComponent('Assalamu Alaikum, I would like to inquire about admissions:\n• Student: ' + inquiryData.student_name + '\n• Age: ' + inquiryData.student_age + '\n• Course: ' + inquiryData.course + '\n• Phone: ' + inquiryData.whatsapp_number);
-      admissionStatus.innerHTML = 'Unable to send online right now. <a href="https://wa.me/916366919122?text=' + waMsg + '" target="_blank" rel="noopener" style="color:#C9A24B;text-decoration:underline;font-weight:700;">Click here to send directly on WhatsApp &rarr;</a>';
+      admissionStatus.innerHTML = 'Unable to send online right now. <a href="https://wa.me/916366919122?text=' + waMsg + '" target="_blank" rel="noopener" style="color:var(--emerald);text-decoration:underline;text-underline-offset:3px;font-weight:700;">Send admission inquiry directly on WhatsApp &rarr;</a>';
       admissionStatus.style.color = '#B3433D';
     }).finally(function(){
       submitBtn.disabled = false;
@@ -5057,7 +5073,7 @@ if (playBtn && audioEl) {
       playBtn.textContent = '❚❚';
     } else {
       audioEl.pause();
-      playBtn.textContent = '▶';
+      playBtn.textContent = '▶'; playBtn.setAttribute('aria-label', 'Play sample Tajweed recitation of Surah Al-Fatihah');
     }
   });
   audioEl.addEventListener('timeupdate', function() {

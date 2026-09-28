@@ -81,7 +81,19 @@ p{
   text-transform:uppercase;
   text-decoration:none;
   border-radius:2px;
+  min-height:44px;
   transition:all 300ms ease;
+}
+:focus-visible{
+  outline:2px solid #7A5C00;
+  outline-offset:3px;
+}
+.btn:focus-visible{
+  outline:2px solid #7A5C00;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
 }
 .btn--primary{background:var(--emerald);color:var(--white);}
 .btn--primary:hover{background:var(--emerald-deep);transform:translateY(-2px);}
@@ -97,7 +109,7 @@ p{
 <body>
 <div class="wrap">
   <span class="seal">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <circle cx="50" cy="50" r="47" stroke="#0B3D2E" stroke-width="1.4"/>
       <circle cx="50" cy="50" r="38" fill="#0B3D2E"/>
       <g stroke="#C9A24B" stroke-width="0.8">
