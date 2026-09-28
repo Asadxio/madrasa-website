@@ -128,29 +128,6 @@
   --container: 1240px;
   --radius: 2px;
   --transition: 420ms cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* ── TYPE SCALE (Issues #2) ── */
-  --fs-xs:   0.72rem;   /* 11.5px */
-  --fs-sm:   0.82rem;   /* 13px   */
-  --fs-base: 1rem;      /* 16px   */
-  --fs-md:   1.05rem;
-  --fs-lg:   1.15rem;
-  --fs-xl:   1.5rem;
-  --fs-2xl:  2rem;
-  --fs-3xl:  2.85rem;
-
-  /* ── SEMANTIC TEXT COLOURS (Issue #3) ── */
-  --text-primary:  var(--charcoal);
-  --text-muted:    var(--charcoal-soft);
-  --text-subtle:   rgba(44,44,44,0.55);
-  --text-accent:   var(--gold);
-  --text-on-dark:  var(--ivory);
-
-  /* ── RADIUS SYSTEM (Issue #4) ── */
-  --radius-sm:   4px;
-  --radius-md:  12px;
-  --radius-lg:  20px;
-  --radius-pill:999px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -203,9 +180,9 @@ h1,h2,h3,h4{
 
 .eyebrow{
   font-family:var(--font-body);
-  font-size:var(--fs-sm);
+  font-size:0.74rem;
   font-weight:600;
-  letter-spacing:0.16em;
+  letter-spacing:0.22em;
   text-transform:uppercase;
   color:var(--gold);
   display:flex;
@@ -241,8 +218,7 @@ h1,h2,h3,h4{
   color:var(--charcoal-soft);
   font-size:1.04rem;
 }
-.section-head p a{color:var(--emerald);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
-.section-head p a:hover{color:var(--gold);text-decoration-color:var(--gold-light);}
+.section-head p a{color:var(--emerald);text-decoration:underline;text-decoration-color:var(--border-gold);}
 
 .section{
   padding:120px 0;
@@ -264,15 +240,14 @@ h1,h2,h3,h4{
   justify-content:center;
   gap:10px;
   padding:16px 36px;
-  font-size:var(--fs-sm);
+  font-size:0.86rem;
   font-weight:600;
-  letter-spacing:0.03em;
-  text-transform:none;
-  border-radius:var(--radius-sm);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  border-radius:var(--radius);
   transition:all var(--transition);
   white-space:nowrap;
   border:1px solid transparent;
-  min-height:44px;
 }
 .btn--primary{
   background:var(--emerald);
@@ -313,7 +288,7 @@ h1,h2,h3,h4{
   color:var(--emerald-deep);
   border-color:var(--ivory);
 }
-.btn--sm{padding:10px 22px;font-size:var(--fs-xs);min-height:40px;}
+.btn--sm{padding:11px 24px;font-size:0.74rem;}
 
 /* Seal / emblem — signature element */
 .seal{
@@ -383,27 +358,20 @@ h1,h2,h3,h4{
   position:relative;
   z-index:1000;
   border-bottom:1px solid rgba(201,162,75,0.2);
-  overflow:hidden;
-  contain:layout style;
 }
 .topbar-inner{
   display:flex;
   align-items:center;
-  gap:0;
-  padding:0;
+  gap:36px;
+  padding:10px 0;
   overflow:hidden;
-  width:100%;
 }
 .topbar-track{
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:36px;
   white-space:nowrap;
   animation:marquee 32s linear infinite;
-  padding:10px 0;
-  /* MUST stay inline-flex so width is natural */
-  flex-shrink:0;
-  will-change:transform;
 }
 .topbar-track span{
   display:inline-flex;align-items:center;gap:8px;
@@ -475,12 +443,12 @@ header#site-header.is-scrolled .brand .seal svg{width:38px;height:38px;}
 
 nav.main-nav{display:flex;align-items:center;gap:0;}
 nav.main-nav a{
-  font-size:0.76rem;
+  font-size:0.78rem;
   font-weight:500;
-  padding:8px 9px;
+  padding:8px 11px;
   color:var(--charcoal);
   position:relative;
-  letter-spacing:0em;
+  letter-spacing:0.005em;
   transition:color var(--transition);
   white-space:nowrap;
 }
@@ -502,7 +470,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   .nav-mobile-only{display:flex !important;}
 }
 
-.nav-actions{display:flex;align-items:center;gap:14px;flex-shrink:0;margin-left:14px;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:14px;}
 .nav-actions .btn{padding:9px 18px;font-size:0.7rem;}
 
 .lang-switch{
@@ -513,10 +481,8 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   flex-shrink:0;
 }
 .lang-switch button{
-  padding:8px 10px;border-radius:14px;color:var(--charcoal-soft);
+  padding:5px 7px;border-radius:14px;color:var(--charcoal-soft);
   transition:all var(--transition);white-space:nowrap;
-  min-width:36px;min-height:36px;
-  display:inline-flex;align-items:center;justify-content:center;
 }
 .lang-switch button.is-active{background:var(--emerald);color:var(--white);}
 .lang-switch button:hover:not(.is-active){background:rgba(11,61,46,0.08);}
@@ -731,9 +697,9 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   direction:rtl;
 }
 .about-verse .verse-ref{
-  font-size:var(--fs-sm);
-  letter-spacing:0.06em;
-  text-transform:none;
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
   color:var(--gold);
   font-weight:600;
 }
@@ -754,7 +720,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   border-top:2px solid var(--gold);
   padding-top:14px;
 }
-.pillar h3{font-size:1.05rem;margin-bottom:6px;}
+.pillar h4{font-size:1.05rem;margin-bottom:6px;}
 .pillar p{font-size:0.88rem;color:var(--charcoal-soft);}
 
 .about-copy h2{
@@ -814,7 +780,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   color:var(--emerald);
 }
 .why-card .icon svg{width:24px;height:24px;}
-.why-card h3{font-size:1rem;margin-bottom:8px;line-height:1.35;}
+.why-card h4{font-size:1rem;margin-bottom:8px;line-height:1.35;}
 .why-card p{font-size:0.84rem;color:var(--charcoal-soft);}
 @media (max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:560px){.why-grid{grid-template-columns:1fr;}}
@@ -863,12 +829,12 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   border:1px solid var(--border-gold-soft);
   padding:36px;
 }
-.team-block h3{
+.team-block h4{
   font-size:1.05rem;
   margin-bottom:18px;
   display:flex;align-items:center;gap:12px;
 }
-.team-block h3::before{
+.team-block h4::before{
   content:'';
   width:24px;height:1px;background:var(--gold);
 }
@@ -910,8 +876,6 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   padding:38px 34px;
   position:relative;
   transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  display:flex;
-  flex-direction:column;
 }
 .course-card:hover{
   transform:translateY(-6px);
@@ -937,11 +901,11 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
 }
 .course-card h3{font-size:1.4rem;}
 .course-card .duration{
-  font-size:var(--fs-xs);
+  font-size:0.72rem;
   font-weight:600;
-  letter-spacing:0.04em;
+  letter-spacing:0.05em;
   color:var(--gold);
-  text-transform:none;
+  text-transform:uppercase;
   white-space:nowrap;
   margin-top:6px;
   display:block;
@@ -955,9 +919,8 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
 }
 .course-card .meta-row div{flex:1;min-width:140px;}
 .course-card .meta-row .meta-label{
-  font-size:var(--fs-xs);letter-spacing:0.03em;text-transform:none;
-  color:var(--charcoal-soft);font-weight:600;margin-bottom:4px;display:block;
-  font-family:var(--font-body);
+  font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:6px;display:block;
 }
 .course-card .meta-row p{font-size:0.85rem;color:var(--charcoal-soft);}
 .course-card .benefits{margin-bottom:22px;}
@@ -973,7 +936,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   position:absolute;left:0;top:9px;
   width:6px;height:1px;background:var(--gold);
 }
-.course-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:20px;}
+.course-actions{display:flex;gap:10px;flex-wrap:wrap;}
 @media (max-width:980px){.courses-grid{grid-template-columns:1fr;}}
 @media (max-width:480px){.course-card{padding:30px 22px;}}
 
@@ -1073,7 +1036,7 @@ nav.main-nav a:hover::after,nav.main-nav a.is-active::after{transform:scaleX(1);
   font-family:var(--font-display);
   font-size:1.8rem;
 }
-.ustadah-card h3{font-size:1.08rem;margin-bottom:6px;}
+.ustadah-card h4{font-size:1.08rem;margin-bottom:6px;}
 .ustadah-card .role{
   font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;
   color:var(--gold);font-weight:600;display:block;margin-bottom:14px;
@@ -1241,7 +1204,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   flex-shrink:0;
   font-size:1.05rem;
 }
-.step-text h3{font-size:1.08rem;margin-bottom:6px;}
+.step-text h4{font-size:1.08rem;margin-bottom:6px;}
 .step-text p{font-size:0.9rem;color:var(--charcoal-soft);}
 
 .admission-form{
@@ -1327,7 +1290,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   color:var(--gold);
 }
 .demo-class-icon svg{width:20px;height:20px;}
-.demo-class-card h3{font-size:1rem;margin-bottom:6px;color:var(--emerald-deep);}
+.demo-class-card h4{font-size:1rem;margin-bottom:6px;color:var(--emerald-deep);}
 .demo-class-card p{font-size:0.86rem;color:var(--charcoal-soft);margin-bottom:10px;}
 .demo-class-link{font-size:0.86rem;font-weight:700;color:var(--emerald);}
 .demo-class-link:hover{color:var(--gold);}
@@ -1356,7 +1319,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   color:var(--gold);
 }
 .life-card .icon svg{width:30px;height:30px;}
-.life-card h3{font-size:0.98rem;margin-bottom:8px;}
+.life-card h4{font-size:0.98rem;margin-bottom:8px;}
 .life-card p{font-size:0.82rem;color:var(--charcoal-soft);}
 @media (max-width:980px){.life-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:560px){.life-grid{grid-template-columns:1fr;}}
@@ -1486,7 +1449,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   padding:30px 26px;
 }
 .dash-card .dash-label{
-  font-size:var(--fs-xs);letter-spacing:0.07em;text-transform:uppercase;
+  font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;
   color:var(--gold);font-weight:600;margin-bottom:14px;display:block;
 }
 .dash-card .dash-main{
@@ -1562,7 +1525,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   display:grid;
   grid-template-columns:0.9fr 1.1fr;
   gap:64px;
-  align-items:flex-start;
+  align-items:center;
 }
 .donate-hadith{
   border-left:2px solid var(--gold);
@@ -1587,12 +1550,8 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   border:1px solid rgba(201,162,75,0.3);
   padding:30px 22px;
   text-align:center;
-  display:flex;
-  flex-direction:column;
-  height:100%;
 }
-.donate-card h3{color:var(--white);font-size:1.08rem;margin-bottom:10px;}
-.donate-card .btn{margin-top:auto;}
+.donate-card h4{color:var(--white);font-size:1.08rem;margin-bottom:10px;}
 .donate-card p{font-size:0.84rem;color:rgba(248,244,236,0.7);margin-bottom:20px;}
 
 .donate-trust{margin-top:32px;display:flex;flex-direction:column;gap:14px;}
@@ -1604,7 +1563,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
 
 .donate-amounts{
   display:flex;flex-wrap:wrap;gap:10px;
-  margin-bottom:16px;
+  margin-bottom:24px;
 }
 .amount-chip{
   border:1px solid rgba(201,162,75,0.4);
@@ -1616,7 +1575,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   transition:background var(--transition), border-color var(--transition), transform var(--transition);
 }
 .amount-chip:hover{background:var(--gold);color:var(--emerald-deep);border-color:var(--gold);transform:translateY(-2px);}
-.amount-chip.is-active{background:var(--gold);color:var(--emerald-deep);border-color:var(--gold);outline:2px solid var(--white);outline-offset:2px;}
+.amount-chip.is-active{background:var(--gold);color:var(--emerald-deep);border-color:var(--gold);}
 .amount-chip--custom{border-style:dashed;}
 .donate-disclaimer{
   margin-top:24px;
@@ -1686,7 +1645,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   color:var(--gold);margin-bottom:10px;
 }
-.road-item .road-card h3{font-size:1.15rem;margin-bottom:8px;}
+.road-item .road-card h4{font-size:1.15rem;margin-bottom:8px;}
 .road-item .road-card p{font-size:0.88rem;color:var(--charcoal-soft);}
 .road-item .road-dot{
   width:14px;height:14px;
@@ -1778,7 +1737,7 @@ a.store-badge:hover{background:rgba(201,162,75,0.12);border-color:var(--gold);}
   color:var(--emerald);
 }
 .contact-info-item .ci-icon svg{width:19px;height:19px;}
-.contact-info-item h3{font-size:0.96rem;margin-bottom:4px;}
+.contact-info-item h4{font-size:0.96rem;margin-bottom:4px;}
 .contact-info-item p{font-size:0.88rem;color:var(--charcoal-soft);}
 .map-embed-wrap{
   border:1px solid var(--border-gold-soft);
@@ -2258,78 +2217,6 @@ footer{
   color: rgba(226,199,127,0.55); font-size: 0.72rem; pointer-events: none;
 }
 
-
-/* ============================================================
-   NAV DROPDOWN (Issues #29, #30)
-   ============================================================ */
-.nav-dropdown{position:relative;display:inline-flex;align-items:center;}
-.nav-more-btn{
-  font-size:0.76rem;font-weight:500;padding:8px 9px;
-  color:var(--charcoal);background:none;border:none;cursor:pointer;
-  position:relative;white-space:nowrap;
-}
-.nav-more-btn:hover{color:var(--emerald);}
-.nav-more-menu{
-  position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);
-  background:var(--white);border:1px solid var(--border-gold-soft);
-  border-radius:var(--radius-md);padding:8px 0;
-  min-width:180px;list-style:none;
-  box-shadow:0 8px 30px rgba(11,61,46,0.12);
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity 250ms ease, visibility 250ms ease, transform 250ms ease;
-  transform:translateX(-50%) translateY(-6px);
-  z-index:200;
-}
-.nav-more-menu.is-open{
-  opacity:1;visibility:visible;pointer-events:auto;
-  transform:translateX(-50%) translateY(0);
-}
-.nav-more-menu li a{
-  display:block;padding:10px 18px;
-  font-size:0.82rem;color:var(--charcoal);
-  transition:background var(--transition), color var(--transition);
-}
-.nav-more-menu li a:hover{background:var(--ivory);color:var(--emerald);}
-
-/* Mobile: flatten dropdown */
-@media (max-width:1480px){
-  .nav-dropdown{width:100%;flex-direction:column;align-items:flex-start;}
-  .nav-more-btn{width:100%;padding:13px 4px;border-bottom:1px solid var(--border-gold-soft);text-align:left;font-size:inherit;}
-  .nav-more-menu{
-    position:static;transform:none;
-    opacity:1;visibility:visible;pointer-events:auto;
-    display:none;box-shadow:none;border:none;
-    border-radius:0;padding:0 0 0 16px;
-    background:transparent;min-width:auto;width:100%;
-  }
-  .nav-more-menu.is-open{display:block;}
-  .nav-more-menu li a{
-    padding:10px 4px;font-size:0.84rem;
-    border-bottom:1px solid var(--border-gold-soft);
-  }
-}
-
-
-/* Admissions steps alignment (Issue #37) */
-.steps-list { padding-left: 0; }
-.step-item { align-items: flex-start; }
-.step-text { flex: 1; }
-.step-text h3,
-.step-text p { margin-left: 0; }
-
-
-/* Donation header layout (Issue #40) */
-.donate-right-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  margin-bottom:14px;
-}
-@media (max-width:640px){
-  .donate-right-header{flex-direction:column;align-items:flex-start;}
-}
-
 </style>
 </head>
 <body>
@@ -2424,22 +2311,15 @@ footer{
       <a href="#home" class="nav-link is-active" data-i18n="nav_home">Home</a>
       <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
       <a href="#courses" class="nav-link" data-i18n="nav_courses">Courses</a>
+      <a href="#app" class="nav-link" data-i18n="nav_app">Mobile App</a>
       <a href="#ustadahs" class="nav-link" data-i18n="nav_ustadahs">Ustadahs</a>
       <a href="#admissions" class="nav-link" data-i18n="nav_admissions">Admissions</a>
+      <a href="#achievements" class="nav-link" data-i18n="nav_achievements">Achievements</a>
+      <a href="#gallery" class="nav-link" data-i18n="nav_gallery">Gallery</a>
       <a href="#donate" class="nav-link" data-i18n="nav_donate">Donate</a>
+      <a href="#vision2030" class="nav-link" data-i18n="nav_vision">Vision 2030</a>
       <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
-      <div class="nav-dropdown" id="navMore">
-        <button class="nav-link nav-more-btn" aria-expanded="false" aria-controls="navMoreMenu" aria-haspopup="true">
-          More ▾
-        </button>
-        <ul class="nav-more-menu" id="navMoreMenu" role="menu">
-          <li role="none"><a href="#app" role="menuitem" data-i18n="nav_app">Mobile App</a></li>
-          <li role="none"><a href="#achievements" role="menuitem" data-i18n="nav_achievements">Achievements</a></li>
-          <li role="none"><a href="#gallery" role="menuitem" data-i18n="nav_gallery">Gallery</a></li>
-          <li role="none"><a href="#vision2030" role="menuitem" data-i18n="nav_vision">Vision 2030</a></li>
-          <li role="none"><a href="#faq" role="menuitem" data-i18n="nav_faq">FAQ</a></li>
-        </ul>
-      </div>
+      <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
       <div class="lang-switch nav-mobile-only" role="group" aria-label="Language switch">
         <button class="is-active" data-lang="en">EN</button>
         <button data-lang="ur">UR</button>
@@ -2447,11 +2327,7 @@ footer{
         <button data-lang="ar">AR</button>
         <button data-lang="kn">ಕ</button>
       </div>
-      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm nav-mobile-only" download style="margin-top:10px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Download App (APK)</span>
-      </a>
-      <a href="#admissions" class="btn btn--primary btn--sm nav-mobile-only" style="margin-top:8px;width:100%;">Apply Now</a>
+      <a href="#admissions" class="btn btn--primary btn--sm nav-mobile-only" style="margin-top:14px;width:100%;">Apply Now</a>
     </nav>
 
     <div class="nav-actions">
@@ -2462,10 +2338,6 @@ footer{
         <button data-lang="ar">AR</button>
         <button data-lang="kn">ಕ</button>
       </div>
-      <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" class="btn btn--gold btn--sm" download style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--forest);font-weight:700;border:none;padding:8px 14px;" title="Download Android App APK v1.0.3">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>App APK</span>
-      </a>
       <a href="#admissions" class="btn btn--primary btn--sm">Apply Now</a>
     </div>
   </div>
@@ -2480,11 +2352,9 @@ footer{
      ============================================================ -->
 <section id="home">
   <div class="container">
-    <div style="text-align:center;margin-bottom:20px;">
-    <div class="batch-ticker-banner reveal" style="display:inline-flex;align-items:center;gap:10px;background:rgba(201,162,75,0.12);border:1px solid var(--gold);padding:6px 18px;border-radius:20px;font-size:var(--fs-sm);font-weight:600;color:var(--emerald-deep);">
+    <div class="batch-ticker-banner reveal" style="display:inline-flex;align-items:center;gap:10px;background:rgba(201,162,75,0.12);border:1px solid var(--gold);padding:6px 18px;border-radius:20px;margin-bottom:20px;font-size:0.85rem;font-weight:600;color:var(--emerald-deep);">
       <span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;animation:pulse 2s infinite;"></span>
       <span>📢 New Admissions Open — Limited Seats Available for Upcoming Batch!</span>
-    </div>
     </div>
     <p class="hero-bismillah reveal">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
     <div class="hero-center">
@@ -2497,14 +2367,10 @@ footer{
       </p>
       <div class="hero-actions reveal reveal-delay-4">
         <a href="#admissions" class="btn btn--primary" data-i18n="hero_apply">Apply Now</a>
-        <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="btn btn--gold" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082b20;border:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#082b20" stroke-width="2.2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>Download App (APK)</span>
-        </a>
-        <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--outline">WhatsApp Inquiry</a>
+        <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold">WhatsApp Inquiry</a>
         <a href="#courses" class="btn btn--outline" data-i18n="hero_courses">View Courses</a>
-        <button type="button" id="openSanadBtn" class="btn btn--gold" style="background:rgba(201,162,75,0.15);color:var(--gold-light);border:1px solid var(--gold);font-weight:600;display:inline-flex;align-items:center;gap:6px;">
-          <span>📜 Generate Sanad</span>
+        <button type="button" id="openSanadBtn" class="btn btn--gold" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082b20;border:none;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          <span>📜 Generate My Sanad</span>
         </button>
       </div>
     </div>
@@ -2542,19 +2408,19 @@ footer{
         <p class="verse-meaning">"Read in the name of your Lord who created."</p>
         <div class="about-pillars">
           <div class="pillar">
-            <h3>Our Mission</h3>
+            <h4>Our Mission</h4>
             <p>To deliver authentic, accessible Islamic education to girls everywhere, free of geographic and social barriers.</p>
           </div>
           <div class="pillar">
-            <h3>Our Vision</h3>
+            <h4>Our Vision</h4>
             <p>A generation of knowledgeable, principled Muslim women carrying the light of Deen into every home.</p>
           </div>
           <div class="pillar">
-            <h3>Our Values</h3>
+            <h4>Our Values</h4>
             <p>Sincerity, discipline, respect for scholarship, and unwavering adherence to Ahlus Sunnah wal Jama'ah.</p>
           </div>
           <div class="pillar">
-            <h3>Future Goals</h3>
+            <h4>Future Goals</h4>
             <p>A physical campus, hostel, and library extending this mission into a permanent institutional home — see Vision 2030.</p>
           </div>
         </div>
@@ -2610,52 +2476,52 @@ footer{
     <div class="why-grid reveal">
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></span>
-        <h3>Girls-Only Environment</h3>
+        <h4>Girls-Only Environment</h4>
         <p>A learning space exclusively for girls and women, at every level of instruction.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></span>
-        <h3>Qualified Ustadahs</h3>
+        <h4>Qualified Ustadahs</h4>
         <p>Female scholars trained in classical texts, tajweed, and Islamic pedagogy.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-        <h3>5+ Years Experience</h3>
+        <h4>5+ Years Experience</h4>
         <p>An established track record of consistent, structured online teaching.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 20c0-3.5-2.5-6-5-6s-5 2.5-5 6"/><circle cx="12" cy="7" r="4"/><circle cx="5" cy="9" r="2.4"/><circle cx="19" cy="9" r="2.4"/></svg></span>
-        <h3>500+ Students</h3>
+        <h4>500+ Students</h4>
         <p>A thriving community of learners spanning India and the diaspora.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v3M16 3v3"/></svg></span>
-        <h3>Live Classes</h3>
+        <h4>Live Classes</h4>
         <p>Real-time instruction with direct interaction and Q&amp;A with Ustadahs.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="10,8 16,12 10,16"/><circle cx="12" cy="12" r="9"/></svg></span>
-        <h3>Recorded Classes</h3>
+        <h4>Recorded Classes</h4>
         <p>Every lesson archived for unlimited revision at the student's own pace.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3M7 12a5 5 0 0010 0"/></svg></span>
-        <h3>Flexible Timings</h3>
+        <h4>Flexible Timings</h4>
         <p>Multiple batch timings designed around students' and homemakers' schedules.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h12a1 1 0 011 1v14H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 002 2h12"/></svg></span>
-        <h3>Islamic Curriculum</h3>
+        <h4>Islamic Curriculum</h4>
         <p>A structured syllabus from foundational Deeniyat through Darse Nizami.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <h3>Maslak Aala Hazrat</h3>
+        <h4>Maslak Aala Hazrat</h4>
         <p>Firmly rooted in Ahlus Sunnah wal Jama'ah and classical Hanafi fiqh.</p>
       </div>
       <div class="why-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
-        <h3>Safe Platform</h3>
+        <h4>Safe Platform</h4>
         <p>Private, moderated digital classrooms built for student protection.</p>
       </div>
     </div>
@@ -2690,11 +2556,11 @@ footer{
 
     <div class="team-row reveal reveal-delay-2">
       <div class="team-block">
-        <h3>Administration Team</h3>
+        <h4>Administration Team</h4>
         <p>Our administration team manages admissions, student records, batch scheduling, and parent communication — ensuring every family receives a prompt, respectful, and organised experience from inquiry to graduation.</p>
       </div>
       <div class="team-block">
-        <h3>Technology Team</h3>
+        <h4>Technology Team</h4>
         <p>A dedicated technology team maintains our live-class infrastructure, mobile application, and digital learning library, keeping the platform secure, stable, and accessible to students across every region and device.</p>
       </div>
     </div>
@@ -3004,25 +2870,25 @@ footer{
     <div class="ustadah-grid reveal">
       <div class="ustadah-card">
         <div class="avatar-ring">س</div>
-        <h3>Ustadha Salika Sumra Fatma</h3>
+        <h4>Ustadha Salika Sumra Fatma</h4>
         <span class="role">Darse Nizami</span>
         <p class="bio">Specialist in classical Fiqh and Aqeedah, guiding senior students through the advanced Darse Nizami syllabus.</p>
       </div>
       <div class="ustadah-card">
         <div class="avatar-ring">ف</div>
-        <h3>Ustadha Salika Firdous Banu</h3>
+        <h4>Ustadha Salika Firdous Banu</h4>
         <span class="role">Qirat &amp; Tajweed</span>
         <p class="bio">A dedicated Qirat instructor known for her patient, detail-focused correction of Tajweed and recitation.</p>
       </div>
       <div class="ustadah-card">
         <div class="avatar-ring">ا</div>
-        <h3>Ustadha Afnaz Raziviya</h3>
+        <h4>Ustadha Afnaz Raziviya</h4>
         <span class="role">Muballigha Course</span>
         <p class="bio">Trains students in Da'wah, public speaking, and confident Islamic guidance for their communities.</p>
       </div>
       <div class="ustadah-card">
         <div class="avatar-ring">+</div>
-        <h3>Ustadha — Name Pending</h3>
+        <h4>Ustadha — Name Pending</h4>
         <span class="role">Kids Deeniyat</span>
         <p class="bio">Brings warmth and creativity to teaching young girls the foundations of their faith with joy. <!-- TODO: replace with real Ustadha name and bio --></p>
       </div>
@@ -3063,10 +2929,6 @@ footer{
           <span>2,000+ downloads</span>
         </div>
         <div class="app-store-row">
-          <a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download class="store-badge" style="background:linear-gradient(135deg,#C9A24B,#8B6914);color:#082B20;border-color:#C9A24B;box-shadow:0 4px 15px rgba(201,162,75,0.35);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#082B20" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#082B20;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span class="store-label"><small style="color:#082B20;font-weight:700;">Direct Install</small><strong style="color:#082B20;">Download APK (v1.0.3)</strong></span>
-          </a>
           <a href="https://play.google.com/store" target="_blank" rel="noopener" class="store-badge">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 2.5v19a.5.5 0 00.8.4l16-9.5a.5.5 0 000-.8l-16-9.5a.5.5 0 00-.8.4z"/></svg>
             <span class="store-label"><small>Get it on</small><strong>Google Play</strong></span>
@@ -3126,40 +2988,40 @@ footer{
           <li class="step-item">
             <span class="step-num">1</span>
             <div class="step-text">
-              <h3 data-i18n="adm_step1">Submit Your Inquiry</h3>
+              <h4 data-i18n="adm_step1">Submit Your Inquiry</h4>
               <p>Share your details through our form or directly via WhatsApp to begin the admission process.</p>
             </div>
           </li>
           <li class="step-item">
             <span class="step-num">2</span>
             <div class="step-text">
-              <h3 data-i18n="adm_step2">Course Consultation</h3>
+              <h4 data-i18n="adm_step2">Course Consultation</h4>
               <p>Our administration team contacts you to discuss course options, batch timings, and any questions.</p>
             </div>
           </li>
           <li class="step-item">
             <span class="step-num">3</span>
             <div class="step-text">
-              <h3 data-i18n="adm_step3">Assessment &amp; Placement</h3>
+              <h4 data-i18n="adm_step3">Assessment &amp; Placement</h4>
               <p>A brief, friendly assessment helps place the student at the right level within the chosen course.</p>
             </div>
           </li>
           <li class="step-item">
             <span class="step-num">4</span>
             <div class="step-text">
-              <h3 data-i18n="adm_step4">Confirmation &amp; Class Access</h3>
+              <h4 data-i18n="adm_step4">Confirmation &amp; Class Access</h4>
               <p>Once confirmed, the student receives batch details, app access, and a warm welcome to begin classes.</p>
             </div>
           </li>
         </ol>
-        <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--outline" style="margin-top:8px;" data-i18n="adm_wa_btn">Start on WhatsApp</a>
+        <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold" style="margin-top:8px;" data-i18n="adm_wa_btn">Start on WhatsApp</a>
 
         <div class="demo-class-card">
           <span class="demo-class-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><polygon points="10,8 16,12 10,16"/><circle cx="12" cy="12" r="9"/></svg>
           </span>
           <div>
-            <h3 data-i18n="demo_h4">Not sure yet? Book a free demo class.</h3>
+            <h4 data-i18n="demo_h4">Not sure yet? Book a free demo class.</h4>
             <p>Sit in on a live session with one of our Ustadahs before you decide — no cost, no obligation.</p>
             <a href="https://wa.me/916366919122?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20book%20a%20free%20demo%20class." data-whatsapp data-whatsapp-text="Assalamu Alaikum, I would like to book a free demo class." target="_blank" rel="noopener" class="demo-class-link" data-i18n="demo_link">Book my free demo class →</a>
           </div>
@@ -3241,42 +3103,42 @@ footer{
     <div class="life-grid reveal">
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 19V5a2 2 0 012-2h12a1 1 0 011 1v14H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 002 2h12"/></svg></span>
-        <h3>Qur'an Competitions</h3>
+        <h4>Qur'an Competitions</h4>
         <p>Annual recitation competitions celebrating Tajweed excellence.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg></span>
-        <h3>Islamic Quizzes</h3>
+        <h4>Islamic Quizzes</h4>
         <p>Friendly knowledge contests covering Seerah, Fiqh, and history.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 18V6l8 3-8 3"/></svg></span>
-        <h3>Naat Recitation</h3>
+        <h4>Naat Recitation</h4>
         <p>Heartfelt Naat sessions showcasing students' devotion and talent.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v4M5 21V11a7 7 0 0114 0v10"/></svg></span>
-        <h3>Speeches</h3>
+        <h4>Speeches</h4>
         <p>Public speaking practice building confidence and clear expression.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></span>
-        <h3>Annual Jalsa</h3>
+        <h4>Annual Jalsa</h4>
         <p>A grand yearly gathering celebrating the achievements of our students.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></span>
-        <h3>Workshops</h3>
+        <h4>Workshops</h4>
         <p>Skill-building sessions on character, parenting, and personal growth.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M8 13l-2 8 6-3 6 3-2-8"/></svg></span>
-        <h3>Awards</h3>
+        <h4>Awards</h4>
         <p>Recognition ceremonies honouring excellence and dedication.</p>
       </div>
       <div class="life-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 20c0-3.5-2.5-6-5-6s-5 2.5-5 6"/><circle cx="12" cy="7" r="4"/></svg></span>
-        <h3>Annual Gatherings</h3>
+        <h4>Annual Gatherings</h4>
         <p>Community events strengthening bonds among students and families.</p>
       </div>
     </div>
@@ -3479,28 +3341,27 @@ footer{
       </div>
 
       <div class="reveal reveal-delay-2">
-        <p style="font-size:var(--fs-sm);color:rgba(248,244,236,0.7);margin-bottom:12px;">Select an amount, then choose where you'd like your donation to go.</p>
         <div class="donate-amounts" role="group" aria-label="Suggested donation amounts">
-          <button type="button" class="amount-chip is-active" aria-pressed="true">₹500</button>
-          <button type="button" class="amount-chip" aria-pressed="false">₹2,000</button>
-          <button type="button" class="amount-chip" aria-pressed="false">₹5,000</button>
-          <button type="button" class="amount-chip" aria-pressed="false">₹10,000</button>
-          <button type="button" class="amount-chip amount-chip--custom" aria-pressed="false">Custom Amount</button>
+          <button type="button" class="amount-chip">₹500</button>
+          <button type="button" class="amount-chip">₹2,000</button>
+          <button type="button" class="amount-chip">₹5,000</button>
+          <button type="button" class="amount-chip">₹10,000</button>
+          <button type="button" class="amount-chip amount-chip--custom">Custom Amount</button>
         </div>
 
         <div class="donate-types">
           <div class="donate-card">
-            <h3 data-i18n="donate_card1">Support Education</h3>
+            <h4 data-i18n="donate_card1">Support Education</h4>
             <p>Fund classroom resources, Ustadah training, and curriculum development.</p>
             <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold btn--sm">Donate</a>
           </div>
           <div class="donate-card">
-            <h3 data-i18n="donate_card2">Sponsor a Student</h3>
+            <h4 data-i18n="donate_card2">Sponsor a Student</h4>
             <p>Cover the course fees of a student who cannot afford to study otherwise.</p>
             <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold btn--sm">Donate</a>
           </div>
           <div class="donate-card">
-            <h3 data-i18n="donate_card3">General Donation</h3>
+            <h4 data-i18n="donate_card3">General Donation</h4>
             <p>Contribute to our overall mission and future Vision 2030 development.</p>
             <a href="https://wa.me/916366919122" data-whatsapp target="_blank" rel="noopener" class="btn btn--gold btn--sm">Donate</a>
           </div>
@@ -3528,7 +3389,7 @@ footer{
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase1">Phase 1 · 2026–2027</span>
-          <h3 data-i18n="vision_campus">Permanent Campus</h4>
+          <h4 data-i18n="vision_campus">Permanent Campus</h4>
           <p>A dedicated, purpose-built campus for in-person classes, examinations, and gatherings — a permanent home for the madrasa.</p>
         </div>
         <span class="road-dot"></span>
@@ -3538,7 +3399,7 @@ footer{
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 1 · 2026–2027</span>
-          <h3 data-i18n="vision_hostel">Residential Hostel</h4>
+          <h4 data-i18n="vision_hostel">Residential Hostel</h4>
           <p>Safe, supervised hostel accommodation enabling out-of-state and international students to study in residence.</p>
         </div>
         <div class="spacer"></div>
@@ -3546,7 +3407,7 @@ footer{
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase2">Phase 2 · 2027–2028</span>
-          <h3 data-i18n="vision_library">Islamic Library</h4>
+          <h4 data-i18n="vision_library">Islamic Library</h4>
           <p>A comprehensive physical and digital library of classical and contemporary Islamic scholarship for student research.</p>
         </div>
         <span class="road-dot"></span>
@@ -3556,7 +3417,7 @@ footer{
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 2 · 2027–2028</span>
-          <h3 data-i18n="vision_schol">Scholarships</h4>
+          <h4 data-i18n="vision_schol">Scholarships</h4>
           <p>A dedicated scholarship fund ensuring no deserving student is ever turned away due to financial hardship.</p>
         </div>
         <div class="spacer"></div>
@@ -3564,7 +3425,7 @@ footer{
       <div class="road-item reveal">
         <div class="road-card">
           <span class="road-phase" data-i18n="vision_phase3">Phase 3 · 2028–2030</span>
-          <h3 data-i18n="vision_tech">Technology Expansion</h4>
+          <h4 data-i18n="vision_tech">Technology Expansion</h4>
           <p>Advanced learning infrastructure, an expanded mobile app, and AI-assisted personalised learning tools.</p>
         </div>
         <span class="road-dot"></span>
@@ -3574,7 +3435,7 @@ footer{
         <span class="road-dot"></span>
         <div class="road-card">
           <span class="road-phase">Phase 3 · 2028–2030</span>
-          <h3 data-i18n="vision_comm">Community Development</h4>
+          <h4 data-i18n="vision_comm">Community Development</h4>
           <p>Outreach programs extending Islamic education and support services to underserved communities nationwide.</p>
         </div>
         <div class="spacer"></div>
@@ -3697,23 +3558,23 @@ footer{
         <div class="contact-info-list">
           <div class="contact-info-item">
             <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5a2 2 0 012-2h2l2 5-2 1a11 11 0 005 5l1-2 5 2v2a2 2 0 01-2 2A16 16 0 013 5z"/></svg></span>
-            <div><h3>WhatsApp</h3><p data-whatsapp-number>+91 63669 19122</p></div>
+            <div><h4>WhatsApp</h4><p data-whatsapp-number>+91 63669 19122</p></div>
           </div>
           <div class="contact-info-item">
             <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-            <div><h3>Email</h3><p>madrastussalikatlilbanat@gmail.com</p></div>
+            <div><h4>Email</h4><p>madrastussalikatlilbanat@gmail.com</p></div>
           </div>
           <div class="contact-info-item">
             <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></span>
-            <div><h3>Instagram</h3><p>@madarsatussalikatlilbanat</p></div>
+            <div><h4>Instagram</h4><p>@madarsatussalikatlilbanat</p></div>
           </div>
           <div class="contact-info-item">
             <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
-            <div><h3 data-i18n="contact_location">Location</h3><p>Bannarbas Road, Hubli, Karnataka, India — serving students globally online</p></div>
+            <div><h4 data-i18n="contact_location">Location</h4><p>Bannarbas Road, Hubli, Karnataka, India — serving students globally online</p></div>
           </div>
           <div class="contact-info-item">
             <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-            <div><h3 data-i18n="contact_hours">Office Hours</h3><p data-i18n="contact_hours_v">Mon – Sat, 10:00 AM – 7:00 PM IST</p></div>
+            <div><h4 data-i18n="contact_hours">Office Hours</h4><p data-i18n="contact_hours_v">Mon – Sat, 10:00 AM – 7:00 PM IST</p></div>
           </div>
         </div>
         <div class="map-embed-wrap">
@@ -3733,20 +3594,20 @@ footer{
           <div class="form-row">
             <div class="form-group">
               <label for="cName" data-i18n="contact_name">Full Name</label>
-              <input type="text" id="cName" name="name" autocomplete="name" required>
+              <input type="text" id="cName" required>
             </div>
             <div class="form-group">
               <label for="cEmail" data-i18n="contact_email">Email Address</label>
-              <input type="email" id="cEmail" name="email" autocomplete="email" required>
+              <input type="email" id="cEmail" required>
             </div>
           </div>
           <div class="form-group">
             <label for="cSubject" data-i18n="contact_subject">Subject</label>
-            <input type="text" id="cSubject" name="subject">
+            <input type="text" id="cSubject">
           </div>
           <div class="form-group">
             <label for="cMsg" data-i18n="contact_message">Message</label>
-            <textarea id="cMsg" name="message" required placeholder="How can we help you?" data-i18n-placeholder="contact_msg_ph"></textarea>
+            <textarea id="cMsg" required placeholder="How can we help you?" data-i18n-placeholder="contact_msg_ph"></textarea>
           </div>
           <div class="form-foot">
             <button type="submit" class="btn btn--primary" data-i18n="contact_send">Send Message</button>
@@ -3832,11 +3693,9 @@ footer{
       <div class="footer-col">
         <h4 data-i18n="footer_quick">Quick Links</h4>
         <ul>
-          <li><a href="https://github.com/Asadxio/msdl/releases/download/v1.0.3/Madrasatu-s-Salikat-v1.0.3.apk" download style="color:var(--gold);font-weight:600;">Download App (APK v1.0.3)</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#ustadahs">Our Ustadahs</a></li>
           <li><a href="#admissions">Admissions</a></li>
-          <li><a href="#app">Mobile App Details</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#vision2030">Vision 2030</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -3902,39 +3761,10 @@ footer{
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<!-- Firebase App & Firestore SDKs (v10 compat) for real-time app & database sync -->
-<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 
 <script>
 (function(){
   "use strict";
-
-  /* ============================================================
-     FIREBASE BACKEND — Madrasatu-s-Salikat Lil Banat
-     Project: madrasa-app-50d6c
-     ============================================================ */
-  var firebaseConfig = {
-    apiKey: "AIzaSyDFk_Cc6yEIROJ60vq0VtyFx0qd4YUeqxQ",
-    authDomain: "madrasa-app-50d6c.firebaseapp.com",
-    projectId: "madrasa-app-50d6c",
-    storageBucket: "madrasa-app-50d6c.appspot.com",
-    messagingSenderId: "675123731963",
-    appId: "1:675123731963:web:2b892063276a7c452cbf5e"
-  };
-
-  var firestoreDb = null;
-  try {
-    if (typeof firebase !== 'undefined') {
-      if (!firebase.apps || !firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-      }
-      firestoreDb = firebase.firestore();
-      console.log('[MSLB] Firebase connected to project madrasa-app-50d6c');
-    }
-  } catch (fbErr) {
-    console.warn('[MSLB Firebase Init Warning]', fbErr);
-  }
 
   /* ============================================================
      SITE CONFIG — single source of truth for contact details.
@@ -4350,44 +4180,24 @@ footer{
     var parentName = document.getElementById('parentName');
     var admMessage = document.getElementById('admMessage');
 
-    var inquiryData = {
+    submitToWeb3Forms({
+      subject: 'New Admission Inquiry — Madarsa Tus Salikat Lil Banat',
+      from_name: studentName.value.trim(),
       student_name: studentName.value.trim(),
-      student_age: ageVal,
-      parent_name: parentName ? parentName.value.trim() : '',
+      student_age: studentAge.value,
+      parent_name: parentName.value.trim(),
       whatsapp_number: whatsappNum.value.trim(),
       course: courseSelect.value,
-      message: admMessage ? admMessage.value.trim() : '',
-      source: 'website',
-      status: 'new',
-      created_at: (typeof firebase !== 'undefined' && firebase.firestore && firebase.firestore.FieldValue)
-        ? firebase.firestore.FieldValue.serverTimestamp()
-        : new Date()
-    };
-
-    var submitPromise;
-    if (firestoreDb) {
-      submitPromise = firestoreDb.collection('admission_inquiries').add(inquiryData);
-    } else {
-      submitPromise = submitToWeb3Forms({
-        subject: 'New Admission Inquiry — Madarsa Tus Salikat Lil Banat',
-        from_name: inquiryData.student_name,
-        student_name: inquiryData.student_name,
-        student_age: inquiryData.student_age,
-        parent_name: inquiryData.parent_name,
-        whatsapp_number: inquiryData.whatsapp_number,
-        course: inquiryData.course,
-        message: inquiryData.message
-      });
-    }
-
-    submitPromise.then(function(){
-      admissionStatus.textContent = 'Alhamdulillah! Your inquiry has been received. Our administration will contact you on WhatsApp within 24 hours.';
-      admissionStatus.style.color = '#2E7D32';
+      message: admMessage.value.trim()
+    }).then(function(){
+      admissionStatus.textContent = 'Thank you! Your inquiry has been received. We will contact you on WhatsApp within 24 hours.';
       admissionForm.reset();
     }).catch(function(err){
-      console.error('[Admission Submit Error]', err);
-      var waMsg = encodeURIComponent('Assalamu Alaikum, I would like to inquire about admissions:\n• Student: ' + inquiryData.student_name + '\n• Age: ' + inquiryData.student_age + '\n• Course: ' + inquiryData.course + '\n• Phone: ' + inquiryData.whatsapp_number);
-      admissionStatus.innerHTML = 'Unable to send online right now. <a href="https://wa.me/916366919122?text=' + waMsg + '" target="_blank" rel="noopener" style="color:#C9A24B;text-decoration:underline;font-weight:700;">Click here to send directly on WhatsApp &rarr;</a>';
+      if(err.message === 'NOT_CONFIGURED'){
+        admissionStatus.textContent = 'Form backend not yet connected — please message us directly on WhatsApp for now.';
+      } else {
+        admissionStatus.textContent = 'Something went wrong sending your inquiry. Please try again or contact us on WhatsApp.';
+      }
       admissionStatus.style.color = '#B3433D';
     }).finally(function(){
       submitBtn.disabled = false;
@@ -5489,51 +5299,6 @@ if ('serviceWorker' in navigator) {
     </div>
   </div>
 </div>
-
-
-<script>
-/* NAV DROPDOWN TOGGLE */
-(function(){
-  var btn = document.querySelector('.nav-more-btn');
-  var menu = document.getElementById('navMoreMenu');
-  if(!btn || !menu) return;
-  function closeMenu(){
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded','false');
-  }
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    var open = menu.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
-  });
-  // Close when a menu link is clicked
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
-  });
-})();
-</script>
-
-
-<script>
-/* DONATION AMOUNT CHIP ARIA-PRESSED (Issue #39) */
-(function(){
-  var chips = document.querySelectorAll('.amount-chip');
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){
-        c.classList.remove('is-active');
-        c.setAttribute('aria-pressed','false');
-      });
-      chip.classList.add('is-active');
-      chip.setAttribute('aria-pressed','true');
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
