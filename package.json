@@ -1,0 +1,34 @@
+{
+  "name": "madrasa-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "scripts": {
+    "test": "playwright test --project=Desktop_Chrome",
+    "test:all": "playwright test",
+    "test:perf": "playwright test --project=Performance",
+    "test:a11y": "playwright test --project=Accessibility",
+    "test:lang": "playwright test --project=Multi-Language",
+    "test:firefox": "playwright test tests/madrasa.spec.js --project=Desktop_Firefox",
+    "test:safari": "playwright test tests/madrasa.spec.js --project=Desktop_Safari",
+    "test:mobile": "playwright test tests/madrasa.spec.js --project=iPhone_13",
+    "test:visual": "playwright test tests/visual.spec.js --project=Desktop_Chrome",
+    "test:report": "playwright show-report test-results/report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asadxio/madrasa-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Asadxio/madrasa-website/issues"
+  },
+  "homepage": "https://github.com/Asadxio/madrasa-website#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0"
+  }
+}
