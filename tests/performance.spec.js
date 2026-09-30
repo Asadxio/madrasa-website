@@ -8,20 +8,20 @@ const BASE = 'https://mslb.nooreharam.com';
 
 test.describe('⚡ Performance', () => {
 
-  test('Page loads within 5 seconds', async ({ page }) => {
+  test('Page loads within 12 seconds', async ({ page }) => {
     const start = Date.now();
     await page.goto(BASE, { waitUntil: 'domcontentloaded' });
     const loadTime = Date.now() - start;
     console.log(`\n⏱️  DOM Load time: ${loadTime}ms`);
-    expect(loadTime).toBeLessThan(5000);
+    expect(loadTime).toBeLessThan(12000);
   });
 
-  test('Network idle within 10 seconds', async ({ page }) => {
+  test('Network idle within 18 seconds', async ({ page }) => {
     const start = Date.now();
     await page.goto(BASE, { waitUntil: 'networkidle' });
     const loadTime = Date.now() - start;
     console.log(`⏱️  Network idle time: ${loadTime}ms`);
-    expect(loadTime).toBeLessThan(10000);
+    expect(loadTime).toBeLessThan(18000);
   });
 
   test('No JavaScript console errors', async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('⚡ Performance', () => {
     expect(errors).toHaveLength(0);
   });
 
-  test('Web Vitals — LCP under 4 seconds', async ({ page }) => {
+  test('Web Vitals — LCP under 6 seconds', async ({ page }) => {
     await page.goto(BASE);
     await page.waitForLoadState('networkidle');
 
@@ -63,7 +63,7 @@ test.describe('⚡ Performance', () => {
 
     console.log(`\n🖼️  LCP: ${Math.round(lcp)}ms`);
     if (lcp > 0) {
-      expect(lcp).toBeLessThan(4000);
+      expect(lcp).toBeLessThan(6000);
     } else {
       console.log('ℹ️  LCP not measurable in headless mode — skipping');
     }

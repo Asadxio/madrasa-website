@@ -1,18 +1,18 @@
 {
   "name": "madrasa-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright test suite and tooling for Madarsa Tus Salikat Lil Banat",
   "main": "sw.js",
   "scripts": {
-    "test": "playwright test --project=Desktop_Chrome",
+    "test": "playwright test --project=\"Desktop Chrome\"",
     "test:all": "playwright test",
-    "test:perf": "playwright test --project=Performance",
-    "test:a11y": "playwright test --project=Accessibility",
-    "test:lang": "playwright test --project=Multi-Language",
-    "test:firefox": "playwright test tests/madrasa.spec.js --project=Desktop_Firefox",
-    "test:safari": "playwright test tests/madrasa.spec.js --project=Desktop_Safari",
-    "test:mobile": "playwright test tests/madrasa.spec.js --project=iPhone_13",
-    "test:visual": "playwright test tests/visual.spec.js --project=Desktop_Chrome",
+    "test:perf": "playwright test --project=\"Performance\"",
+    "test:a11y": "playwright test --project=\"Accessibility\"",
+    "test:lang": "playwright test --project=\"Multi-Language\"",
+    "test:visual": "playwright test --project=\"Visual\"",
+    "test:firefox": "playwright test --project=\"Desktop Firefox\"",
+    "test:safari": "playwright test --project=\"Desktop Safari\"",
+    "test:mobile": "playwright test --project=\"iPhone 13\"",
     "test:report": "playwright show-report test-results/report"
   },
   "repository": {

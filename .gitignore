@@ -1,3 +1,7 @@
 .netlify
 .DS_Store
 Thumbs.db
+node_modules/
+test-results/artifacts/
+test-results/report/
+test-results/results.json

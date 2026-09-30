@@ -3,7 +3,7 @@
 // ACCESSIBILITY TESTS — axe-core WCAG 2.2 AA Audit
 // ============================================================
 const { test, expect } = require('@playwright/test');
-const { checkA11y, injectAxe, getViolations } = require('@axe-core/playwright');
+const { AxeBuilder } = require('@axe-core/playwright');
 
 const BASE = 'https://mslb.nooreharam.com';
 
@@ -12,35 +12,32 @@ test.describe('♿ Accessibility — axe-core WCAG 2.2 AA', () => {
   test('Homepage — Zero critical violations', async ({ page }) => {
     await page.goto(BASE);
     await page.waitForLoadState('networkidle');
-    await injectAxe(page);
 
-    const violations = await getViolations(page, null, {
-      axeOptions: {
-        runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] },
-      },
-    });
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
 
-    const critical = violations.filter(v => v.impact === 'critical');
-    const serious  = violations.filter(v => v.impact === 'serious');
-    const moderate = violations.filter(v => v.impact === 'moderate');
-    const minor    = violations.filter(v => v.impact === 'minor');
+    const critical = results.violations.filter(v => v.impact === 'critical');
+    const serious  = results.violations.filter(v => v.impact === 'serious');
+    const moderate = results.violations.filter(v => v.impact === 'moderate');
+    const minor    = results.violations.filter(v => v.impact === 'minor');
 
     console.log(`\n♿ AXE AUDIT RESULTS:`);
     console.log(`   🔴 Critical:  ${critical.length}`);
     console.log(`   🟠 Serious:   ${serious.length}`);
     console.log(`   🟡 Moderate:  ${moderate.length}`);
     console.log(`   🔵 Minor:     ${minor.length}`);
-    console.log(`   📊 Total:     ${violations.length}`);
+    console.log(`   📊 Total:     ${results.violations.length}`);
 
-    if (violations.length > 0) {
+    if (results.violations.length > 0) {
       console.log('\n--- Violations ---');
-      violations.forEach(v => {
+      results.violations.forEach(v => {
         console.log(`[${v.impact?.toUpperCase()}] ${v.id}: ${v.description}`);
         v.nodes.forEach(n => console.log(`   → ${n.html.slice(0, 100)}`));
       });
     }
 
-    // No critical violations allowed
+    // Zero critical violations allowed
     expect(critical.length).toBe(0);
   });
 
@@ -60,13 +57,6 @@ test.describe('♿ Accessibility — axe-core WCAG 2.2 AA', () => {
     // Must have exactly 1 H1
     const h1s = headings.filter(h => h.level === 1);
     expect(h1s.length).toBe(1);
-    // No heading levels should skip (e.g. H1→H3 without H2)
-    for (let i = 1; i < headings.length; i++) {
-      const diff = headings[i].level - headings[i - 1].level;
-      if (diff > 1) {
-        console.log(`⚠️  Heading jump: H${headings[i-1].level} → H${headings[i].level}: "${headings[i].text}"`);
-      }
-    }
   });
 
   test('All interactive elements are keyboard reachable', async ({ page }) => {
@@ -105,12 +95,17 @@ test.describe('♿ Accessibility — axe-core WCAG 2.2 AA', () => {
       const inputs = document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]), textarea, select');
       const issues = [];
       inputs.forEach(input => {
+        // Skip hidden / honeypot fields
+        if (input.closest('.hidden') || input.closest('[style*="display:none"]') || input.getAttribute('aria-hidden') === 'true') {
+          return;
+        }
         const id = input.id;
         const label = id ? document.querySelector(`label[for="${id}"]`) : null;
+        const parentLabel = input.closest('label');
         const ariaLabel = input.getAttribute('aria-label');
         const ariaLabelledby = input.getAttribute('aria-labelledby');
-        if (!label && !ariaLabel && !ariaLabelledby) {
-          issues.push({ tag: input.tagName, id, type: input.getAttribute('type') });
+        if (!label && !parentLabel && !ariaLabel && !ariaLabelledby) {
+          issues.push({ tag: input.tagName, id, name: input.getAttribute('name'), type: input.getAttribute('type') });
         }
       });
       return issues;
@@ -149,35 +144,32 @@ test.describe('♿ Accessibility — axe-core WCAG 2.2 AA', () => {
 
   test('Color contrast — axe check', async ({ page }) => {
     await page.goto(BASE);
-    await injectAxe(page);
+    await page.waitForLoadState('networkidle');
 
-    const violations = await getViolations(page, null, {
-      axeOptions: {
-        runOnly: { type: 'rule', values: ['color-contrast'] },
-      },
-    });
+    const results = await new AxeBuilder({ page })
+      .withRules(['color-contrast'])
+      .analyze();
 
-    console.log(`\n🎨 Color contrast violations: ${violations.length}`);
-    violations.forEach(v => {
+    console.log(`\n🎨 Color contrast violations: ${results.violations.length}`);
+    results.violations.forEach(v => {
       v.nodes.forEach(n => console.log(`   → ${n.html.slice(0, 100)}`));
     });
 
-    expect(violations.length).toBe(0);
+    // Zero contrast violations
+    expect(results.violations.length).toBe(0);
   });
 
   test('ARIA roles are valid', async ({ page }) => {
     await page.goto(BASE);
-    await injectAxe(page);
+    await page.waitForLoadState('networkidle');
 
-    const violations = await getViolations(page, null, {
-      axeOptions: {
-        runOnly: { type: 'rule', values: ['aria-allowed-role', 'aria-valid-attr', 'aria-valid-attr-value'] },
-      },
-    });
+    const results = await new AxeBuilder({ page })
+      .withRules(['aria-allowed-role', 'aria-valid-attr', 'aria-valid-attr-value'])
+      .analyze();
 
-    console.log(`\n🏷️  ARIA violations: ${violations.length}`);
-    violations.forEach(v => console.log(`   [${v.impact}] ${v.id}: ${v.description}`));
-    expect(violations.length).toBe(0);
+    console.log(`\n🏷️  ARIA violations: ${results.violations.length}`);
+    results.violations.forEach(v => console.log(`   [${v.impact}] ${v.id}: ${v.description}`));
+    expect(results.violations.length).toBe(0);
   });
 
   test('Skip navigation link works', async ({ page }) => {
@@ -191,11 +183,10 @@ test.describe('♿ Accessibility — axe-core WCAG 2.2 AA', () => {
 
   test('Modal focus trap works', async ({ page }) => {
     await page.goto(BASE);
-    // Try to open privacy policy modal or any dialog
     const dialogs = page.locator('[role="dialog"]');
     const count = await dialogs.count();
     console.log(`\n🪟 Dialog elements found: ${count}`);
-    expect(count).toBeGreaterThanOrEqual(0); // Just verify they exist
+    expect(count).toBeGreaterThanOrEqual(1);
   });
 
 });

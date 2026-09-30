@@ -22,35 +22,41 @@ module.exports = defineConfig({
   },
 
   projects: [
-    // ── Desktop Browsers ───────────────────────────────────────────
+    // ── Desktop Browsers (Core 51 Tests) ───────────────────────────
     {
       name: 'Desktop Chrome',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: '**/madrasa.spec.js',
     },
     {
       name: 'Desktop Firefox',
       use: { ...devices['Desktop Firefox'] },
+      testMatch: '**/madrasa.spec.js',
     },
     {
       name: 'Desktop Safari',
       use: { ...devices['Desktop Safari'] },
+      testMatch: '**/madrasa.spec.js',
     },
 
-    // ── Mobile Devices ─────────────────────────────────────────────
+    // ── Mobile Devices (Core 51 Tests) ─────────────────────────────
     {
       name: 'iPhone 13',
       use: { ...devices['iPhone 13'] },
+      testMatch: '**/madrasa.spec.js',
     },
     {
       name: 'Samsung Galaxy S21',
       use: { ...devices['Galaxy S9+'] },
+      testMatch: '**/madrasa.spec.js',
     },
     {
       name: 'iPad Pro',
       use: { ...devices['iPad Pro 11'] },
+      testMatch: '**/madrasa.spec.js',
     },
 
-    // ── Specific Test Suites (Chrome only for speed) ───────────────
+    // ── Dedicated Specialty Test Suites ───────────────────────────
     {
       name: 'Performance',
       use: { ...devices['Desktop Chrome'] },
@@ -65,6 +71,11 @@ module.exports = defineConfig({
       name: 'Multi-Language',
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**/multilang.spec.js',
+    },
+    {
+      name: 'Visual',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**/visual.spec.js',
     },
   ],
 

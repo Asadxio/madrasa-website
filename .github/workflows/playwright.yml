@@ -50,6 +50,10 @@ jobs:
         run: npx playwright test --project="Multi-Language" --reporter=list
         continue-on-error: true
 
+      - name: 📸 Run Visual Regression Tests
+        run: npx playwright test --project="Visual" --reporter=list
+        continue-on-error: true
+
       - name: 🌐 Cross-Browser — Firefox
         run: npx playwright test tests/madrasa.spec.js --project="Desktop Firefox" --reporter=list
         continue-on-error: true
