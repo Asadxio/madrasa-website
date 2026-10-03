@@ -1192,7 +1192,10 @@ function recalc(){
   const silverNisabThreshold = SILVER_NISAB_GRAMS * silverRatePerGram;
   const goldNisabThreshold = GOLD_NISAB_GRAMS * goldRatePerGram;
 
-  document.getElementById('silverNisabThreshold').textContent = formatMoney(silverNisabThreshold);
+  const silverNisabEl = document.getElementById('silverNisabThreshold');
+  if (silverNisabEl) {
+    silverNisabEl.textContent = formatMoney(silverNisabThreshold);
+  }
 
   // Determine Nisab eligibility
   // In Hanafi Fiqh: If assets contain only gold and nothing else, gold nisab is checked.
