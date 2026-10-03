@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main Homepage / Madrasa Portal -->
+  <url>
+    <loc>https://mslb.nooreharam.com/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mslb.nooreharam.com/" />
+    <xhtml:link rel="alternate" hreflang="ur" href="https://mslb.nooreharam.com/?lang=ur" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://mslb.nooreharam.com/?lang=hi" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mslb.nooreharam.com/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="kn" href="https://mslb.nooreharam.com/?lang=kn" />
+  </url>
+
+  <!-- Dedicated Complete Women's Umrah & Hajj Guide -->
+  <url>
+    <loc>https://mslb.nooreharam.com/hajj-umrah-guide.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>

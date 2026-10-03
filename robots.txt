@@ -1,0 +1,32 @@
+# robots.txt for https://mslb.nooreharam.com/
+# Madarsa Tus Salikat Lil Banat — Online Islamic Girls Madrasa
+
+User-agent: *
+Allow: /
+Disallow: /tests/
+Disallow: /test-results/
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# XML Sitemaps
+Sitemap: https://mslb.nooreharam.com/sitemap.xml
