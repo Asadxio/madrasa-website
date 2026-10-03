@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3F754EQZGL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3F754EQZGL');
+</script>
+
 <title>Madarsa Tus Salikat Lil Banat — Online Islamic Girls Madrasa | Darse Nizami &amp; Islamic Studies</title>
 <meta name="description" content="Official website of Madarsa Tus Salikat Lil Banat. World-class online Islamic madrasa exclusively for girls and women. Courses: Darse Nizami (Aalimah), Muballigha, Qirat, Tajweed, Islamic jurisprudence, Umrah &amp; Hajj women's guidance under Maslak Aala Hazrat.">
 <meta name="keywords" content="online madrasa for girls, online aalimah course, muballigha course, islamic education for women, qirat tajweed classes, aala hazrat maslak madrasa, umrah guide for women, hajj rules for ladies, female quran tutor, dars e nizami online, karnataka online madrasa, islamic school for girls">
@@ -6479,6 +6490,65 @@ document.addEventListener('keydown', function(e){
         t.setAttribute('aria-selected', 'false');
       });
       tab.setAttribute('aria-selected', 'true');
+    });
+  });
+<script>
+/* Google Analytics 4 (GA4) Smart Event Tracking */
+(function(){
+  if (typeof gtag !== 'function') return;
+
+  // Track WhatsApp clicks
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      gtag('event', 'whatsapp_click', {
+        event_category: 'engagement',
+        event_label: a.href
+      });
+    });
+  });
+
+  // Track Android APK Downloads
+  document.querySelectorAll('a[href$=".apk"], a[download]').forEach(function(a){
+    a.addEventListener('click', function(){
+      gtag('event', 'apk_download', {
+        event_category: 'download',
+        event_label: a.getAttribute('download') || a.href
+      });
+    });
+  });
+
+  // Track Admission Form Submission
+  var admForm = document.getElementById('admissionForm');
+  if (admForm) {
+    admForm.addEventListener('submit', function(){
+      gtag('event', 'generate_lead', {
+        event_category: 'conversion',
+        event_label: 'Admission Inquiry Form'
+      });
+    });
+  }
+
+  // Track Contact Form Submission
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(){
+      gtag('event', 'contact_submit', {
+        event_category: 'conversion',
+        event_label: 'Contact Message Form'
+      });
+    });
+  }
+
+  // Track Language Switch clicks
+  document.querySelectorAll('.lang-switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var lang = btn.getAttribute('data-lang');
+      if (lang) {
+        gtag('event', 'select_content', {
+          content_type: 'language',
+          item_id: lang
+        });
+      }
     });
   });
 })();
