@@ -50,4 +50,28 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Dedicated Women's Shar'i Hijab & Mahram Guide -->
+  <url>
+    <loc>https://mslb.nooreharam.com/womens-hijab-guide.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Dedicated Women's Taharah, Haiz & Ghusl Guide -->
+  <url>
+    <loc>https://mslb.nooreharam.com/womens-taharah-guide.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Interactive Islamic Quiz & Digital Sanad Generator -->
+  <url>
+    <loc>https://mslb.nooreharam.com/islamic-quiz.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
