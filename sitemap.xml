@@ -34,4 +34,20 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Dedicated Daily Masnoon Duas & Azkar -->
+  <url>
+    <loc>https://mslb.nooreharam.com/daily-duas.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Interactive Gold & Silver Zakat Calculator for Women -->
+  <url>
+    <loc>https://mslb.nooreharam.com/zakat-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>

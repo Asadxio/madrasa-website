@@ -1,9 +1,14 @@
-const CACHE_NAME = 'madrasa-v1';
+const CACHE_NAME = 'madrasa-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/404.html',
-  '/manifest.json'
+  '/manifest.json',
+  '/hajj-umrah-guide.html',
+  '/womens-namaz-guide.html',
+  '/daily-duas.html',
+  '/zakat-calculator.html',
+  '/assets/pwa-install.js'
 ];
 
 self.addEventListener('install', (event) => {

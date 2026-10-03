@@ -77,6 +77,11 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**/visual.spec.js',
     },
+    {
+      name: 'New Guides',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**/new-guides.spec.js',
+    },
   ],
 
   outputDir: 'test-results/artifacts',
