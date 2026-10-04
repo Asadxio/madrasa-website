@@ -208,6 +208,23 @@ test.describe('Tosha ki Fatiha & Khatam Gyarween Sharif (Khatam Qadria)', () => 
     expect(content).toContain('Article');
     expect(content).toContain('HowTo');
     expect(content).toContain('FAQPage');
+
+    // 🔤 Test Roman Urdu / Hinglish Language Switcher
+    const romanPill = page.locator('.lang-pill[data-lang="roman"]');
+    await romanPill.click();
+    await expect(page.locator('body')).toHaveClass(/lang-roman/);
+    await expect(page.locator('#hero-title')).toContainText('Tosha ki Fatiha ka Tarika');
+    
+    // Verify Phonetic Roman Transliteration is present on waza'if
+    const firstTranslit = page.locator('.wazifa-translit').first();
+    await expect(firstTranslit).toBeVisible();
+    await expect(firstTranslit).toContainText('Allahumma Salli Ala Sayyidina');
+
+    // 🇬🇧 Test English Language Switcher
+    const enPill = page.locator('.lang-pill[data-lang="en"]');
+    await enPill.click();
+    await expect(page.locator('body')).toHaveClass(/lang-en/);
+    await expect(page.locator('#hero-title')).toContainText('Method of Tosha ki Fatiha');
   });
 });
 
