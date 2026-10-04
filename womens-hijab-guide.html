@@ -356,7 +356,7 @@ header.site-header{
 
 .relation-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
   gap:16px;
 }
 .rel-card{
@@ -378,6 +378,8 @@ header.site-header{
   justify-content:space-between;
   align-items:flex-start;
   margin-bottom:8px;
+  flex-wrap:wrap;
+  gap:6px;
 }
 .rel-title{
   font-weight:700;
@@ -415,14 +417,21 @@ header.site-header{
 }
 
 /* Satr Boundary Table */
+.table-wrap{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin:24px 0;
+  border-radius:10px;
+  border:1px solid var(--border-gold);
+}
 .satr-table{
   width:100%;
+  min-width:540px;
   border-collapse:collapse;
-  margin:24px 0;
+  margin:0;
   background:var(--white);
-  border:1px solid var(--border-gold);
-  border-radius:10px;
-  overflow:hidden;
 }
 .satr-table th{
   background:var(--emerald-deep);
@@ -501,6 +510,9 @@ footer a{color:var(--gold);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 
 @media (max-width:860px){
+  .guide-sec{padding:20px 16px;}
+  .content-wrap{padding:24px 14px 60px;}
+  .relation-grid{grid-template-columns:1fr;}
   .faq-grid{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .checker-controls{flex-direction:column;}
@@ -647,7 +659,7 @@ footer a:hover{text-decoration:underline;}
     <!-- Essential Conditions of Shar'i Hijab -->
     <section class="guide-sec" aria-labelledby="conditions-title">
       <h2 id="conditions-title">4. The 6 Conditions of a Valid Shar'i Hijab</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:18px;margin-top:20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:18px;margin-top:20px;">
         <div style="background:var(--ivory);padding:22px;border-radius:12px;border-left:3px solid var(--gold);">
           <h4 style="color:var(--emerald-deep);margin-bottom:6px;font-size:1.05rem;">1. Complete Coverage</h4>
           <p style="font-size:0.86rem;color:var(--charcoal-soft);">It must cover all parts of the body designated as Awrah, including every strand of hair, the neck, and wrists.</p>
