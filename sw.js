@@ -1,4 +1,4 @@
-const CACHE_NAME = 'madrasa-v3';
+const CACHE_NAME = 'madrasa-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -11,6 +11,7 @@ const ASSETS_TO_CACHE = [
   '/womens-hijab-guide.html',
   '/womens-taharah-guide.html',
   '/islamic-quiz.html',
+  '/tosha-khatam-qadria.html',
   '/assets/pwa-install.js'
 ];
 

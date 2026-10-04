@@ -169,3 +169,45 @@ test.describe('PWA & Service Worker Integration', () => {
     await expect(pwaScript).toBeAttached();
   });
 });
+
+test.describe('Tosha ki Fatiha & Khatam Gyarween Sharif (Khatam Qadria)', () => {
+  test('Tosha guide loads with authentic wazaif, ingredient scaler, and counters', async ({ page }) => {
+    await page.goto('/tosha-khatam-qadria.html');
+    await expect(page).toHaveTitle(/توشہ کی فاتحہ کا طریقہ و ختم گیارہویں شریف/);
+
+    // Verify 20 Khatam Qadria waza'if exist
+    const wazaif = page.locator('.wazifa-item');
+    await expect(wazaif).toHaveCount(20);
+
+    // Test digital counter tap interaction
+    const firstCounterBtn = page.locator('.counter-btn').first();
+    const countVal = firstCounterBtn.locator('.cnt-val');
+    await expect(countVal).toHaveText('0 / 111');
+    await firstCounterBtn.click();
+    await expect(countVal).toHaveText('1 / 111');
+
+    // Test dynamic ingredient scaler (half scale = 2.5kg)
+    const halfScaleBtn = page.locator('.scale-pill').nth(1);
+    await halfScaleBtn.click();
+    await expect(halfScaleBtn).toHaveClass(/active/);
+    const firstRowWeight = page.locator('.wazan-table tbody tr td').nth(3);
+    await expect(firstRowWeight).toContainText('2.50 کلو');
+
+    // Verify Qasida Ghousia section exists
+    const qasidaSection = page.locator('#qasida');
+    await expect(qasidaSection).toBeVisible();
+
+    // Verify Shajrah Razawiyya section exists
+    const shajrahSection = page.locator('#shajrah');
+    await expect(shajrahSection).toBeVisible();
+
+    // Verify Rich Schema (Article, HowTo, FAQPage)
+    const jsonLd = page.locator('script[type="application/ld+json"]');
+    await expect(jsonLd).toBeAttached();
+    const content = await jsonLd.textContent();
+    expect(content).toContain('Article');
+    expect(content).toContain('HowTo');
+    expect(content).toContain('FAQPage');
+  });
+});
+
