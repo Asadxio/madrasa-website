@@ -194,7 +194,7 @@ test.describe('Tosha ki Fatiha & Khatam Gyarween Sharif (Khatam Qadria)', () => 
     await expect(firstRowWeight).toContainText('2.50 کلو');
 
     // Verify Qasida Ghousia section exists
-    const qasidaSection = page.locator('#qasida');
+    const qasidaSection = page.locator('#qasida-ghousia');
     await expect(qasidaSection).toBeVisible();
 
     // Verify Shajrah Razawiyya section exists
