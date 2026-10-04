@@ -160,6 +160,9 @@
   --font-arabic: 'Amiri', serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html, body{
+  overflow-x:hidden;
+}
 body{
   font-family:var(--font-body);
   color:var(--charcoal);
@@ -655,6 +658,9 @@ footer a:hover{text-decoration:underline;}
   .field-grid{grid-template-columns:1fr;}
   .faq-grid{grid-template-columns:1fr;}
   .nav-links{display:none;}
+  .config-bar{flex-direction:column;align-items:flex-start;gap:12px;padding:16px;}
+  .config-group{width:100%;justify-content:space-between;flex-wrap:wrap;}
+  .select-styled{max-width:100%;}
 }
 </style>
 </head>
