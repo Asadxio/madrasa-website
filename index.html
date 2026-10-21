@@ -6180,11 +6180,21 @@ window.addEventListener('DOMContentLoaded', function() {
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(reg) {
-      console.log('ServiceWorker registered successfully: ', reg.scope);
+    navigator.serviceWorker.register('/sw.js?v=50').then(function(reg) {
+      reg.update();
+      console.log('ServiceWorker registered & updated: ', reg.scope);
     }).catch(function(err) {
       console.log('ServiceWorker registration failed: ', err);
     });
+  });
+}
+if ('caches' in window) {
+  caches.keys().then(function(names) {
+    for (var i = 0; i < names.length; i++) {
+      if (names[i] !== 'madrasa-v50-release') {
+        caches.delete(names[i]);
+      }
+    }
   });
 }
 </script>
